@@ -75,6 +75,10 @@
                         <label>31641</label>
                         <onclick>noop</onclick>
                     </item>
+                    <item id="11">
+                        <label>XBMB3C</label>
+                        <onclick>noop</onclick>
+                    </item>
                 </content>
             </control>
             <control type="label">
@@ -580,6 +584,39 @@
                         <onclick condition="Stringcompare(Skin.String(LibraryStructure),1)">Skin.SetString(LibraryStructure,2)</onclick>
                     </control>
                 </control>
+                <control type="grouplist" id="9403"><!-- Modes -->
+                    <visible>Container(9000).HasFocus(11)</visible>
+                    <animation effect="fade" reversible="true" time="150">VisibleChange</animation>
+                    <left>387</left>
+                    <top>195</top>
+                    <width>1469</width>
+                    <height>732</height>
+                    <onleft>9100</onleft>
+                    <onright>60</onright>
+                    <itemgap>0</itemgap>
+                    <pagecontrol>-</pagecontrol>
+                    <control type="radiobutton" id="1901">
+                        <label>Media Browser Video Mode</label>
+                        <include>Default_SettingRadioButton</include>
+                        <onclick>Skin.ToggleSetting(xbmb3c)</onclick>
+                        <onclick>Skin.Reset(defaultsettings)</onclick>                        
+                        <onclick>ReplaceWindow(Home)</onclick>
+                        <selected>Skin.HasSetting(xbmb3c)</selected>
+                    </control>                    
+                    <control type="radiobutton" id="1902">
+                        <label>Media Browser Music Mode</label>
+                        <include>Default_SettingRadioButton</include>
+                        <onclick>Skin.ToggleSetting(xbmb3cmusic)</onclick>
+                        <onclick>Skin.Reset(defaultsettings)</onclick>                        
+                        <onclick>ReplaceWindow(Home)</onclick>
+                        <selected>Skin.HasSetting(xbmb3cmusic)</selected>
+                    </control>                    
+                    <control type="button" id="1903">
+                        <label>Set Default Views</label>
+                        <include>Default_SettingButton</include>
+                        <onclick>RunAddon(plugin.video.xbmb3c,"?mode=3&url=http%3a%2f%2fSETVIEWSSETVIEWS")</onclick>
+                    </control>
+                </control>                
             </control>			
             <control type="group">
                 <left>1170</left>

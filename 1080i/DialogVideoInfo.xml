@@ -79,7 +79,7 @@
 						<onclick>SetFocus(601)</onclick>
 						<colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
 						<ondown>131</ondown>
-						<visible>!IsEmpty(ListItem.Director)</visible>
+                        <visible>!Skin.HasSetting(xbmb3c) & !IsEmpty(ListItem.Director)</visible>
 					</control>
 					<control type="button" id="131">
 						<left>875</left>
@@ -95,7 +95,8 @@
 						<colordiffuse>$VAR[FocusTextureColorVar]</colordiffuse>
 						<ondown>600</ondown>
 						<onup>130</onup>
-						<enable>!IsEmpty(ListItem.Writer)</enable>
+                        <enable>!Skin.HasSetting(xbmb3c) & !IsEmpty(ListItem.Writer)</enable>
+                        <visible>!Skin.HasSetting(xbmb3c)</visible>
 					</control>
 				</control>
 				<!-- Movie info -->
@@ -547,13 +548,14 @@
 							<orientation>horizontal</orientation>
 							<itemgap>12</itemgap>
 							<height>43</height>
-							<visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(MusicVideos)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) & (Container.Content(movies) | Container.Content(episodes) | Container.Content(MusicVideos))</visible>
 							<control type="image">
 								<top>-6</top>
 								<width>50</width>
 								<height>50</height>
 								<aspectratio align="right">keep</aspectratio>
 								<colordiffuse>white</colordiffuse>
+                                <visible>!Skin.HasSetting(xbmb3c)</visible>
 								<texture>$VAR[Colortdefaulticons]writer-icon.png</texture>
 							</control>
 							<control type="label">
@@ -561,10 +563,20 @@
 								<width>840</width>
 								<height>44</height>
 								<label fallback="31006">$INFO[ListItem.Writer]</label>
+                                <visible>!Skin.HasSetting(xbmb3c)</visible>
 								<font>Font_Reg28_2</font>
 							</control>
 						</control>
 					</control>
+                    <control type="image">
+                        <left>4</left>
+                        <top>258</top>
+                        <width>40</width>
+                        <height>40</height>
+                        <aspectratio align="right">keep</aspectratio>
+                        <colordiffuse>white</colordiffuse>
+                        <texture>$VAR[Colortdefaulticons]DefaultActor.png</texture>
+                    </control>
 					<control type="group">
 						<control type="grouplist">
 							<orientation>vertical</orientation>
@@ -963,6 +975,7 @@
 							<fadetime>0</fadetime>
 						</control>
 					</focusedlayout>
+                    <content target="video">$INFO[ListItem.Property(CastPluginLink)]</content>
 				</control>
 				<control type="group">
 					<control type="image">
@@ -1079,423 +1092,1150 @@
 							<item>
 								<label>$INFO[Container(50).ListItem(0).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(0).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(0).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(0).Label)</visible>
 								<onclick>SetProperty(Position,0)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(1).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(1).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(1).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(1).Label)</visible>
 								<onclick>SetProperty(Position,1)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(2).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(2).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(2).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(2).Label)</visible>
 								<onclick>SetProperty(Position,2)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(3).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(3).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(3).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(3).Label)</visible>
 								<onclick>SetProperty(Position,3)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(4).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(4).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(4).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(4).Label)</visible>
 								<onclick>SetProperty(Position,4)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(5).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(5).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(5).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(5).Label)</visible>
 								<onclick>SetProperty(Position,5)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(6).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(6).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(6).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(6).Label)</visible>
 								<onclick>SetProperty(Position,6)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(7).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(7).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(7).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(7).Label)</visible>
 								<onclick>SetProperty(Position,7)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(8).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(8).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(8).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(8).Label)</visible>
 								<onclick>SetProperty(Position,8)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(9).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(9).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(9).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(9).Label)</visible>
 								<onclick>SetProperty(Position,9)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(10).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(10).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(10).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(10).Label)</visible>
 								<onclick>SetProperty(Position,10)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(11).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(11).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(11).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(11).Label)</visible>
 								<onclick>SetProperty(Position,11)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(12).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(12).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(12).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(12).Label)</visible>
 								<onclick>SetProperty(Position,12)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(13).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(13).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(13).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(13).Label)</visible>
 								<onclick>SetProperty(Position,13)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(14).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(14).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(14).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(14).Label)</visible>
 								<onclick>SetProperty(Position,14)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(15).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(15).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(15).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(15).Label)</visible>
 								<onclick>SetProperty(Position,15)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(16).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(16).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(16).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(16).Label)</visible>
 								<onclick>SetProperty(Position,16)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(17).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(17).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(17).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(17).Label)</visible>
 								<onclick>SetProperty(Position,17)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(18).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(18).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(18).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(18).Label)</visible>
 								<onclick>SetProperty(Position,18)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(19).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(19).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(19).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(19).Label)</visible>
 								<onclick>SetProperty(Position,19)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(20).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(20).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(20).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(20).Label)</visible>
 								<onclick>SetProperty(Position,20)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(21).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(21).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(21).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(21).Label)</visible>
 								<onclick>SetProperty(Position,21)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(22).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(22).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(22).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(22).Label)</visible>
 								<onclick>SetProperty(Position,22)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(23).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(23).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(23).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(23).Label)</visible>
 								<onclick>SetProperty(Position,23)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(24).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(24).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(24).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(24).Label)</visible>
 								<onclick>SetProperty(Position,24)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(25).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(25).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(25).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(25).Label)</visible>
 								<onclick>SetProperty(Position,25)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(26).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(26).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(26).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(26).Label)</visible>
 								<onclick>SetProperty(Position,26)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(27).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(27).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(27).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(27).Label)</visible>
 								<onclick>SetProperty(Position,27)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(28).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(28).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(28).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(28).Label)</visible>
 								<onclick>SetProperty(Position,28)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(29).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(29).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(29).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(29).Label)</visible>
 								<onclick>SetProperty(Position,29)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(30).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(30).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(30).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(30).Label)</visible>
 								<onclick>SetProperty(Position,30)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(31).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(31).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(31).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(31).Label)</visible>
 								<onclick>SetProperty(Position,31)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(32).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(32).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(32).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(32).Label)</visible>
 								<onclick>SetProperty(Position,32)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(33).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(33).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(33).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(33).Label)</visible>
 								<onclick>SetProperty(Position,33)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(34).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(34).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(34).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(34).Label)</visible>
 								<onclick>SetProperty(Position,34)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(35).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(35).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(35).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(35).Label)</visible>
 								<onclick>SetProperty(Position,35)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(36).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(36).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(36).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(36).Label)</visible>
 								<onclick>SetProperty(Position,36)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(37).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(37).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(37).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(37).Label)</visible>
 								<onclick>SetProperty(Position,37)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(38).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(38).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(38).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(38).Label)</visible>
 								<onclick>SetProperty(Position,38)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(39).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(39).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(39).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(39).Label)</visible>
 								<onclick>SetProperty(Position,39)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(40).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(40).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(40).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(40).Label)</visible>
 								<onclick>SetProperty(Position,40)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(41).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(41).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(41).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(41).Label)</visible>
 								<onclick>SetProperty(Position,41)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(42).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(42).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(42).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(42).Label)</visible>
 								<onclick>SetProperty(Position,42)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(43).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(43).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(43).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(43).Label)</visible>
 								<onclick>SetProperty(Position,43)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(44).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(44).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(44).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(44).Label)</visible>
 								<onclick>SetProperty(Position,44)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(45).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(45).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(45).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(45).Label)</visible>
 								<onclick>SetProperty(Position,45)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(46).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(46).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(46).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(46).Label)</visible>
 								<onclick>SetProperty(Position,46)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(47).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(47).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(47).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(47).Label)</visible>
 								<onclick>SetProperty(Position,47)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(48).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(48).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(48).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(48).Label)</visible>
 								<onclick>SetProperty(Position,48)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(49).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(49).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(49).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(49).Label)</visible>
 								<onclick>SetProperty(Position,49)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(50).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(50).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(50).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(50).Label)</visible>
 								<onclick>SetProperty(Position,50)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(51).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(51).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(51).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(51).Label)</visible>
 								<onclick>SetProperty(Position,51)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(52).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(52).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(52).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(52).Label)</visible>
 								<onclick>SetProperty(Position,52)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(53).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(53).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(53).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(53).Label)</visible>
 								<onclick>SetProperty(Position,53)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(54).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(54).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(54).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(54).Label)</visible>
 								<onclick>SetProperty(Position,54)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(55).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(55).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(55).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(55).Label)</visible>
 								<onclick>SetProperty(Position,55)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(56).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(56).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(56).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(56).Label)</visible>
 								<onclick>SetProperty(Position,56)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(57).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(57).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(57).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(57).Label)</visible>
 								<onclick>SetProperty(Position,57)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(58).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(58).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(58).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(58).Label)</visible>
 								<onclick>SetProperty(Position,58)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
 							<item>
 								<label>$INFO[Container(50).ListItem(59).Label]</label>
 								<thumb>$INFO[Container(50).ListItem(59).Thumb]</thumb>
-								<visible>!IsEmpty(Container(50).ListItemNoWrap(59).Label)</visible>
+                            <visible>!Skin.HasSetting(xbmb3c) +!IsEmpty(Container(50).ListItemNoWrap(59).Label)</visible>
 								<onclick>SetProperty(Position,59)</onclick>
 								<onclick>SetFocus(599)</onclick>
 							</item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(0).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(0).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(0).Label)</visible>
+                            <onclick>SetProperty(Position,0)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                                                
+                         </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(1).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(1).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(1).Label)</visible>
+                            <onclick>SetProperty(Position,1)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                                                     
+                         </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(2).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(2).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(2).Label)</visible>
+                            <onclick>SetProperty(Position,2)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                                                       
+                        </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(3).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(3).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(3).Label)</visible>
+                            <onclick>SetProperty(Position,3)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>                            
+                        <item>
+                            <label>$INFO[Container(50).ListItem(4).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(4).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(4).Label)</visible>
+                            <onclick>SetProperty(Position,4)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>                            
+                        <item>
+                            <label>$INFO[Container(50).ListItem(5).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(5).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(5).Label)</visible>
+                            <onclick>SetProperty(Position,5)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(6).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(6).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(6).Label)</visible>
+                            <onclick>SetProperty(Position,6)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(7).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(7).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(7).Label)</visible>
+                            <onclick>SetProperty(Position,7)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(8).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(8).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(8).Label)</visible>
+                            <onclick>SetProperty(Position,8)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(9).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(9).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(9).Label)</visible>
+                            <onclick>SetProperty(Position,9)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(10).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(10).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(10).Label)</visible>
+                            <onclick>SetProperty(Position,10)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(11).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(11).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(11).Label)</visible>
+                            <onclick>SetProperty(Position,11)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(12).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(12).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(12).Label)</visible>
+                            <onclick>SetProperty(Position,12)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(13).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(13).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(13).Label)</visible>
+                            <onclick>SetProperty(Position,13)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(14).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(14).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(14).Label)</visible>
+                            <onclick>SetProperty(Position,14)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(15).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(15).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(15).Label)</visible>
+                            <onclick>SetProperty(Position,15)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(16).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(16).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(16).Label)</visible>
+                            <onclick>SetProperty(Position,16)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(17).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(17).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(17).Label)</visible>
+                            <onclick>SetProperty(Position,17)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(18).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(18).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(18).Label)</visible>
+                            <onclick>SetProperty(Position,18)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(19).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(19).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(19).Label)</visible>
+                            <onclick>SetProperty(Position,19)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(20).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(20).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(20).Label)</visible>
+                            <onclick>SetProperty(Position,20)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(21).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(21).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(21).Label)</visible>
+                            <onclick>SetProperty(Position,21)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(22).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(22).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(22).Label)</visible>
+                            <onclick>SetProperty(Position,22)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(23).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(23).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(23).Label)</visible>
+                            <onclick>SetProperty(Position,23)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(24).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(24).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(24).Label)</visible>
+                            <onclick>SetProperty(Position,24)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(25).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(25).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(25).Label)</visible>
+                            <onclick>SetProperty(Position,25)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(26).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(26).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(26).Label)</visible>
+                            <onclick>SetProperty(Position,26)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(27).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(27).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(27).Label)</visible>
+                            <onclick>SetProperty(Position,27)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(28).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(28).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(28).Label)</visible>
+                            <onclick>SetProperty(Position,28)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(29).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(29).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(29).Label)</visible>
+                            <onclick>SetProperty(Position,29)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(30).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(30).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(30).Label)</visible>
+                            <onclick>SetProperty(Position,30)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(31).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(31).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(31).Label)</visible>
+                            <onclick>SetProperty(Position,31)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(32).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(32).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(32).Label)</visible>
+                            <onclick>SetProperty(Position,32)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(33).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(33).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(33).Label)</visible>
+                            <onclick>SetProperty(Position,33)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(34).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(34).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(34).Label)</visible>
+                            <onclick>SetProperty(Position,34)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(35).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(35).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(35).Label)</visible>
+                            <onclick>SetProperty(Position,35)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(36).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(36).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(36).Label)</visible>
+                            <onclick>SetProperty(Position,36)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(37).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(37).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(37).Label)</visible>
+                            <onclick>SetProperty(Position,37)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(38).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(38).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(38).Label)</visible>
+                            <onclick>SetProperty(Position,38)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(39).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(39).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(39).Label)</visible>
+                            <onclick>SetProperty(Position,39)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(40).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(40).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(40).Label)</visible>
+                            <onclick>SetProperty(Position,40)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(41).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(41).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(41).Label)</visible>
+                            <onclick>SetProperty(Position,41)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(42).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(42).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(42).Label)</visible>
+                            <onclick>SetProperty(Position,42)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(43).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(43).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(43).Label)</visible>
+                            <onclick>SetProperty(Position,43)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(44).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(44).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(44).Label)</visible>
+                            <onclick>SetProperty(Position,44)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(45).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(45).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(45).Label)</visible>
+                            <onclick>SetProperty(Position,45)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(46).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(46).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(46).Label)</visible>
+                            <onclick>SetProperty(Position,46)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(47).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(47).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(47).Label)</visible>
+                            <onclick>SetProperty(Position,47)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(48).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(48).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(48).Label)</visible>
+                            <onclick>SetProperty(Position,48)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(49).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(49).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(49).Label)</visible>
+                            <onclick>SetProperty(Position,49)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(50).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(50).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(50).Label)</visible>
+                            <onclick>SetProperty(Position,50)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(51).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(51).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(51).Label)</visible>
+                            <onclick>SetProperty(Position,51)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(52).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(52).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(52).Label)</visible>
+                            <onclick>SetProperty(Position,52)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(53).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(53).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(53).Label)</visible>
+                            <onclick>SetProperty(Position,53)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(54).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(54).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(54).Label)</visible>
+                            <onclick>SetProperty(Position,54)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(55).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(55).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(55).Label)</visible>
+                            <onclick>SetProperty(Position,55)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(56).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(56).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(56).Label)</visible>
+                            <onclick>SetProperty(Position,56)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(57).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(57).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(57).Label)</visible>
+                            <onclick>SetProperty(Position,57)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(58).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(58).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(58).Label)</visible>
+                            <onclick>SetProperty(Position,58)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        <item>
+                            <label>$INFO[Container(50).ListItem(59).Label]</label>
+                            <thumb>$INFO[Container(50).ListItem(59).Thumb]</thumb>
+                            <visible>Skin.HasSetting(xbmb3c) + !IsEmpty(Container(50).ListItemNoWrap(59).Label)</visible>
+                            <onclick>SetProperty(Position,59)</onclick>
+                            <onclick>Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                            <onclick>SetProperty(ListType,Actors,home)</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>Action(Select)</onclick>
+                            <onclick>Control.Move(50,-$INFO[Window.Property(Position)])</onclick>                            
+                            <onclick>SetProperty(ContainerTitle,$INFO[Container(600).ListItem.Label],home)</onclick>
+                            <onclick>SetFocus(600)</onclick>                                 </item>
+                        
+						<!-- Start ShadowTek 150 actors code
+						<include contitional="Skin.HasSetting(ExtraActorList)">ShadowTek_ActorsMod</include>
+					 End ShadowTek 150 actors code -->
 						</content>
 					</control>
 					<control type="panel" id="601">
@@ -1546,7 +2286,18 @@
 								<onclick condition="Stringcompare(Window(home).Property(ListType),Director)">SetFocus(13)</onclick>
 								<onclick condition="Stringcompare(Window(home).Property(ListType),Director)">Action(Select)</onclick>
 								<onclick>SetFocus(600)</onclick>
-								<visible>!Stringcompare(Window(home).Property(ListType),Writer)</visible>
+                                <visible>!Stringcompare(Window(home).Property(ListType),Writer) + !Skin.HasSetting(xbmb3c)</visible>
+                            </item>
+                            <item>
+                                <label>Details</label>
+                                <onclick condition="Stringcompare(Window(home).Property(ListType),Actors)">Control.Move(50,$INFO[Window.Property(Position)])</onclick>
+                                <onclick condition="Stringcompare(Window(home).Property(ListType),Actors)">SetFocus(50)</onclick>
+                                <onclick condition="Stringcompare(Window(home).Property(ListType),Actors)">Action(Select)</onclick>
+                                <onclick condition="Stringcompare(Window(home).Property(ListType),Actors)">Control.Move(50,-$INFO[Window.Property(Position)])</onclick>
+                                <onclick condition="Stringcompare(Window(home).Property(ListType),Director)">SetFocus(13)</onclick>
+                                <onclick condition="Stringcompare(Window(home).Property(ListType),Director)">Action(Select)</onclick>
+                                <onclick>SetFocus(600)</onclick>
+                                <visible>Skin.HasSetting(xbmb3c)</visible>
 							</item>
 							<item>
 								<label>31172</label>
@@ -1562,6 +2313,7 @@
 								<onclick condition="Stringcompare(Window(home).Property(ListType),Writer)">ActivateWindow(videos,plugin://plugin.video.youtube/?path=/root/search&amp;feed=search&amp;search=$INFO[ListItem.Writer],return)</onclick>
 								<onclick condition="Stringcompare(Window(home).Property(ListType),Director)">ActivateWindow(videos,plugin://plugin.video.youtube/?path=/root/search&amp;feed=search&amp;search=$INFO[ListItem.Director],return)</onclick>
 								<onclick>Action(Close)</onclick>
+                                <!--<visible>!Stringcompare(Window(home).Property(ListType),Writer) + !Skin.HasSetting(xbmb3c)</visible>-->
 							</item>
 							<item>
 								<label>31066</label>
@@ -1584,6 +2336,15 @@
 					<control type="button" id="8">
 						<label>$VAR[DialogVideoInfoButtonLabelVar]</label>
 						<include>DialogVideoInfoButton</include>
+                        <onclick>$INFO[Window(home).Property("MB3.Action")]</onclick>
+                        <onclick>Dialog.Close(MovieInformation)</onclick>
+                    </control>
+               		<control type="button" id="101">
+						<description>Extras</description>
+						<include>DialogVideoInfoButton</include>
+						<label>$LOCALIZE[208] $LOCALIZE[15111]</label>
+						<onclick>PlayMedia($INFO[ListItem.FileNameAndPath]\theme.mp3)</onclick>
+						<visible>Container.Content(tvshows) + System.HasAddon(script.tvtunes)</visible>
 					</control>
 					<control type="button" id="9">
 						<label>$LOCALIZE[13404] $INFO[ListItem.PercentPlayed,(,%)]</label>

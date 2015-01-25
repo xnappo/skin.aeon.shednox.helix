@@ -1389,8 +1389,9 @@
             <visible>Substring(Control.GetLabel(4321),classic) + !Window.IsActive(1120)</visible>
             <include>Animation_Widgets</include>
             <visible>![IsEmpty(Window(Home).Property(NextAired.1.Label)) + Substring(Control.GetLabel(4321),nextairedtv)]</visible>
-            <visible>![IsEmpty(Window(Home).Property(RecommendedMovie.1.Title)) + Substring(Control.GetLabel(4321),watchlistmovies)]</visible>
-            <visible>![IsEmpty(Window(Home).Property(RecommendedEpisode.1.Title)) + Substring(Control.GetLabel(4321),watchlisttv)]</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + ![IsEmpty(Window(Home).Property(RecommendedEpisode.1.Title)) + Substring(Control.GetLabel(4321),watchlisttv)]</visible>
+            <visible>Skin.HasSetting(xbmb3c) + ![IsEmpty(Window(Home).Property(NextUpEpisodeMB3.1.EpisodeTitle)) + Substring(Control.GetLabel(4321),watchlisttv)]</visible>
+            <visible>Skin.HasSetting(xbmb3c) + ![IsEmpty(Window(Home).Property(InProgressMovieMB3.1.Title)) + Substring(Control.GetLabel(4321),watchlistmovies)]</visible>
             <animation effect="slide" end="0,-258" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu)">Conditional</animation>
             <animation effect="slide" time="160" end="0,-38" condition="!Skin.HasSetting(lowermainmenu) + Skin.HasSetting(rsshomelow)">Conditional</animation>
             <!--Unfocused widget-->
@@ -2090,8 +2091,10 @@
             <label>$LOCALIZE[208]</label>
             <onclick condition="Substring(Window(home).Property(WidgetType),artist)">ActivateWindow(musiclibrary,$ESCINFO[Window(home).Property(Path)],return)</onclick>
             <onclick condition="Substring(Window(home).Property(WidgetType),album)">Playlist.Clear</onclick>
-            <onclick condition="Substring(Window(home).Property(WidgetType),movies)">Runscript(service.skin.widgets,movieid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
-            <onclick condition="Substring(Window(home).Property(WidgetType),tv)">Runscript(service.skin.widgets,episodeid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
+			<onclick condition="Substring(Window(home).Property(WidgetType),movies) + !Skin.HasSetting(xbmb3c)">Runscript(service.skin.widgets,movieid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
+			<onclick condition="Substring(Window(home).Property(WidgetType),movies) + Skin.HasSetting(xbmb3c)">PlayMedia($ESCINFO[Window(home).Property(Path)])</onclick>
+			<onclick condition="Substring(Window(home).Property(WidgetType),tv) + !Skin.HasSetting(xbmb3c)">Runscript(service.skin.widgets,episodeid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
+			<onclick condition="Substring(Window(home).Property(WidgetType),tv) + Skin.HasSetting(xbmb3c)">PlayMedia($ESCINFO[Window(home).Property(Path)])</onclick>            
             <onclick condition="Substring(Window(home).Property(WidgetType),musicvideo)">Runscript(service.skin.widgets,musicvideoid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
             <onclick condition="!Substring(Window(home).Property(WidgetType),artist) + !Substring(Window(home).Property(WidgetType),addons) + !Substring(Window(home).Property(WidgetType),artists) + !Substring(Window(home).Property(WidgetType),rss) + !Substring(Window(home).Property(WidgetType),roms) + !Substring(Window(home).Property(WidgetType),musicvideo) + !Substring(Window(home).Property(WidgetType),tv) + !Substring(Window(home).Property(WidgetType),movie)">$INFO[Window(home).Property(Path)]</onclick>
             <onclick condition="Substring(Window(home).Property(WidgetType),addons)">RunAddon($INFO[Window(home).Property(Path)])</onclick>
@@ -2142,8 +2145,9 @@
             <visible>IsEmpty(Window(home).Property(DisableWidgets))</visible>
             <visible>[Substring(Control.GetLabel(4321),featured) | Substring(Control.GetLabel(4321),panel)]</visible>
             <visible>![IsEmpty(Window(Home).Property(NextAired.1.Label)) + Substring(Control.GetLabel(4321),nextairedtv)]</visible>
-            <visible>![IsEmpty(Window(Home).Property(RecommendedMovie.1.Title)) + Substring(Control.GetLabel(4321),watchlistmovies)]</visible>
-            <visible>![IsEmpty(Window(Home).Property(RecommendedEpisode.1.Title)) + Substring(Control.GetLabel(4321),watchlisttv)]</visible>
+		
+                <visible>![IsEmpty(Window(Home).Property(InProgressMovieMB3.1.Title)) + Substring(Control.GetLabel(4321),watchlistmovies)]</visible>
+            <visible>![IsEmpty(Window(Home).Property(NextUpEpisodeMB3.1.EpisodeTitle)) + Substring(Control.GetLabel(4321),watchlisttv)] | ![IsEmpty(Window(Home).Property(RecommendedEpisode.1.Title)) + Substring(Control.GetLabel(4321),watchlisttv)]</visible>
             <include>Animation_Widgets</include>
             <animation type="Conditional" condition="true">
                 <effect type="zoom" start="100" end="97" center="960,540" time="240" tween="cubic" />
@@ -2748,7 +2752,7 @@
                     <top>-345</top>
                     <width>460</width>
                     <height>690</height>
-                    <aspectratio>scale</aspectratio>
+					<aspectratio>keep</aspectratio>
                     <texture background="true" fallback="DefaultVideoBigPoster.png">$INFO[Window(home).Property(Icon)]</texture>
                     <visible>IsEmpty(Window(home).Property(Poster))</visible>
                 </control>
@@ -2757,7 +2761,7 @@
                     <top>-345</top>
                     <width>460</width>
                     <height>690</height>
-                    <aspectratio>scale</aspectratio>
+					<aspectratio>keep</aspectratio>
                  <texture background="true">$INFO[Window(home).Property(Poster)]</texture>
 				 <visible>!Skin.HasSetting(CasesonWidgets)</visible>
                 </control>
@@ -2770,7 +2774,7 @@
 						<top>-327</top>
 						<width>450</width>
 						<height>623</height>
-						<aspectratio>stretch</aspectratio>
+						<aspectratio>keep</aspectratio>
 						<texture background="true">$INFO[Window(home).Property(Poster)]</texture>
 					</control>				
 					<control type="image">
@@ -2791,7 +2795,7 @@
 						<top>-380</top>
 						<width>455</width>
 						<height>680</height>
-						<aspectratio>stretch</aspectratio>
+						<aspectratio>keep</aspectratio>
 						<texture background="true" diffuse="thumbs/movieposter_mask.png">$INFO[Window(home).Property(Poster)]</texture>
 					</control>				
 					<control type="image">
@@ -2805,16 +2809,15 @@
 				</control> 				
 			    <control type="group">
 					<top>55</top>
-					<left>-35</left>
+					<left>-30</left>
 					<visible>Substring(Window(home).Property(WidgetType),tv) + Skin.HasSetting(CasesonWidgets)</visible>					
 					<control type="image">
-						<left>27</left>
+						<left>30</left>
 						<top>-405</top>
-						<width>468</width>
-						<height>696</height>
-						<aspectratio>stretch</aspectratio>
-					
-						<texture background="true" diffuse="wall/wall_movie_mask.png" fallback="DefaultVideoBigPoster.png">$INFO[Window(home).Property(Poster)]</texture>
+						<width>463</width>
+						<height>690</height>
+						<aspectratio>keep</aspectratio>
+						<texture background="true" diffuse="thumbs/movieposter_mask.png">$INFO[Window(home).Property(Poster)]</texture>
 					</control>				
 					<control type="image">
 						<left>5</left>
@@ -2854,8 +2857,10 @@
                         <include>WidgetMenuLabel</include>
                         <onclick condition="!IsEmpty(Window(home).Property(PanelWidgetInfo))">SetFocus(5010)</onclick>
                         <onclick condition="!IsEmpty(Window(home).Property(PanelWidget2Info))">SetFocus(6010)</onclick>
-                        <onclick condition="Substring(Window(home).Property(WidgetType),movies)">Runscript(service.skin.widgets,movieid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
-                        <onclick condition="Substring(Window(home).Property(WidgetType),tv)">Runscript(service.skin.widgets,episodeid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
+						<onclick condition="Substring(Window(home).Property(WidgetType),movies) + !Skin.HasSetting(xbmb3c)">Runscript(service.skin.widgets,movieid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
+						<onclick condition="Substring(Window(home).Property(WidgetType),movies) + Skin.HasSetting(xbmb3c)">PlayMedia($ESCINFO[Window(home).Property(Path)])</onclick>
+						<onclick condition="Substring(Window(home).Property(WidgetType),tv) + !Skin.HasSetting(xbmb3c)">Runscript(service.skin.widgets,episodeid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
+						<onclick condition="Substring(Window(home).Property(WidgetType),tv) + Skin.HasSetting(xbmb3c)">PlayMedia($ESCINFO[Window(home).Property(Path)])</onclick>                        
                         <onclick condition="Substring(Window(home).Property(WidgetType),musicvideo)">Runscript(service.skin.widgets,musicvideoid=$INFO[Window(home).Property(DBID)],resume=false)</onclick>
                         <onclick condition="Substring(Window(home).Property(WidgetType),roms)">RunScript(script.games.rom.collection.browser,launchid=$INFO[Window(home).Property(Id)])</onclick>
                         <onclick condition="!SubString(Window(home).Property(WidgetType),actor) + !Substring(Window(home).Property(WidgetType),roms) + !Substring(Window(home).Property(WidgetType),movies) + !Substring(Window(home).Property(WidgetType),tv) + !Substring(Window(home).Property(WidgetType),musicvideo)">$INFO[Window(home).Property(Path)]</onclick>
@@ -3104,7 +3109,8 @@
                         <textcolor>white6</textcolor>
                         <pagecontrol>5019</pagecontrol>
                         <autoscroll delay="5000" time="AutoScrollTime" repeat="8000">Skin.HasSetting(AutoScroll)</autoscroll>
-                        <visible>IsEmpty(Window(home).Property(Discart)) + !Substring(Window(home).Property(WidgetType),tv)</visible>
+						<!-- <visible>IsEmpty(Window(home).Property(Discart)) + !Substring(Window(home).Property(WidgetType),tv)</visible> -->
+						<visible>IsEmpty(Window(home).Property(Discart))</visible>
                     </control>
                     <control type="textbox" id="5060">
                         <width>960</width>
@@ -4369,7 +4375,7 @@
             <animation effect="slide" end="0,25" time="320" tween="cubic" easing="inout" condition="[[Skin.HasSetting(totalshomehigh) + !Skin.HasSetting(DisableLibraryStats)] | [Skin.HasSetting(timehomehigh) + !Skin.HasSetting(DisableTimePanel)]]">Conditional</animation>
             <visible>[Substring(Control.GetLabel(4325),featured) | Substring(Control.GetLabel(4325),panel)]</visible>
             <visible>![IsEmpty(Window(Home).Property(NextAired.1.Label)) + Substring(Control.GetLabel(4325),nextairedtv)]</visible>
-            <visible>![IsEmpty(Window(Home).Property(RecommendedMovie.1.Title)) + Substring(Control.GetLabel(4325),watchlistmovies,left)]</visible>
+            <visible>![IsEmpty(Window(Home).Property(InProgressMovieMB3.1.Title)) + Substring(Control.GetLabel(4325),watchlistmovies)]</visible>
             <visible>IsEmpty(Window(home).Property(DisableWidgets))</visible>
             <include>Animation_Widgets</include>
             <animation type="Conditional" condition="true">
@@ -5313,12 +5319,14 @@
                     </control>
                 </focusedlayout>
                 <content>
-                    <include condition="Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),recentmoviespanel)]">LatestMoviesItems</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),recentmoviespanel)]">LatestMoviesItems</include>
+					<include condition="Skin.HasSetting(xbmb3c) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),recentmoviespanel)]">LatestMoviesItems</include>
+                           <include condition="Skin.HasSetting(xbmb3c) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),watchlistmoviespanel)]">WatchlistMoviesItems</include>
                     <include condition="Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),randommoviespanel)]">RandomMoviesItems</include>
                     <include condition="Library.HasContent(musicvideos) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),watchlistmusicvideospanel)]">WatchListMusicVideosItems</include>
                     <include condition="Library.HasContent(musicvideos) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),recentmusicvideospanel)]">MusicvideoLatestItems</include>
                     <include condition="Library.HasContent(musicvideos) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),randommusicvideospanel)]">MusicvideoRandomItems</include>
-                    <include condition="Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),watchlistmoviespanel)]">WatchlistMoviesItems</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),watchlistmoviespanel)]">WatchlistMoviesItems</include>
                     <include condition="Library.HasContent(music)">RandomAlbumsItems</include>
                     <include condition="Library.HasContent(music) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),randomalbumspanel)">RandomAlbumsItemsHome</include>
                     <include condition="Library.HasContent(music)">RandomArtistsItems</include>
@@ -5330,12 +5338,18 @@
                     <include condition="System.HasAddon(script.metadata.actors) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),actorspanel)]">BornActorsItems</include>
                     <include>RandomAddonsItems</include>
                     <include condition="!Window.IsActive(1124) + Substring(Skin.String(widgetlist),randomaddonspanel)">RandomAddonsItemsHome</include>
-                    <include condition="Library.HasContent(tvshows)">LatestEpisodesItems</include>
-                    <include condition="Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),recenttvpanel)">LatestEpisodesItemsHome</include>
-                    <include condition="Library.HasContent(tvshows)">RandomEpisodesItems</include>
-                    <include condition="Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),randomtvpanel)">RandomEpisodesItemsHome</include>
-                    <include condition="Library.HasContent(tvshows)">WatchListTVItems</include>
-                    <include condition="Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),watchlisttvpanel)">WatchListTVItemsHome</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows)">LatestEpisodesItems</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),recenttvpanel)">LatestEpisodesItemsHome</include>
+					<include condition="Skin.HasSetting(xbmb3c)">LatestEpisodesItems</include>
+					<include condition="Skin.HasSetting(xbmb3c) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),recenttvpanel)">LatestEpisodesItemsHome</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows)">RandomEpisodesItems</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),randomtvpanel)">RandomEpisodesItemsHome</include>
+					<include condition="Skin.HasSetting(xbmb3c)">RandomEpisodesItems</include>
+					<include condition="Skin.HasSetting(xbmb3c) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),randomtvpanel)">RandomEpisodesItemsHome</include>                    
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows)">WatchListTVItems</include>
+                    <include condition="Skin.HasSetting(xbmb3c)">WatchListTVItems</include>
+                    <include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),watchlisttvpanel)">WatchListTVItemsHome</include>
+                    <include condition="Skin.HasSetting(xbmb3c) + !Window.IsActive(1124) + Substring(Skin.String(widgetlist),watchlisttvpanel)">WatchListTVItemsHome</include>
                     <include condition="System.HasAddon(script.games.rom.collection.browser) + [Window.IsActive(1124) | Substring(Skin.String(widgetlist),mostplayedromspanel)]">MostPlayedRomsItems</include>
                     <include condition="System.HasAddon(script.randomandlastitems) + [Window.IsActive(1124) | SubString(Skin.String(widgetlist),1custompanel)]">Custom1Widget</include>
                     <include condition="System.HasAddon(script.randomandlastitems) + [Window.IsActive(1124) | SubString(Skin.String(widgetlist),2custompanel)]">Custom2Widget</include>
@@ -5514,7 +5528,7 @@
                         <top>5</top>
                         <width>218</width>
                         <height>340</height>
-                        <aspectratio>scale</aspectratio>
+						<aspectratio>keep</aspectratio>
                         <texture background="true" fallback="DefaultVideoBigPoster.png">$INFO[ListItem.Property(Poster)]</texture>
 						<visible>!Skin.HasSetting(CasesonWidgets)</visible>
                     </control>
@@ -5793,7 +5807,8 @@
                     </control>
                 </focusedlayout>
                 <content>
-                    <include condition="Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),recentmoviespanel)]">LatestMoviesItems2</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),recentmoviespanel)]">LatestMoviesItems2</include>
+                    <include condition="Skin.HasSetting(xbmb3c) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),recentmoviespanel)]">LatestMoviesItems2</include>
                     <include condition="Library.HasContent(movies) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),randommoviespanel)]">RandomMoviesItems2</include>
                     <include condition="Library.HasContent(musicvideos) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),watchlistmusicvideospanel)]">WatchListMusicVideosItems2</include>
                     <include condition="Library.HasContent(musicvideos) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),recentmusicvideospanel)]">MusicvideoLatestItems2</include>
@@ -5810,12 +5825,19 @@
                     <include condition="System.HasAddon(script.metadata.actors) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),actorspanel)]">BornActorsItems2</include>
                     <include>RandomAddonsItems2</include>
                     <include condition="!Window.IsActive(1124) + Substring(Skin.String(widget2list),randomaddonspanel)">RandomAddonsItems2Home</include>
-                    <include condition="Library.HasContent(tvshows)">LatestEpisodesItems2</include>
-                    <include condition="Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),recenttvpanel)">LatestEpisodesItems2Home</include>
-                    <include condition="Library.HasContent(tvshows)">RandomEpisodesItems2</include>
-                    <include condition="Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),randomtvpanel)">RandomEpisodesItems2Home</include>
-                    <include condition="Library.HasContent(tvshows)">WatchListTVItems2</include>
-                    <include condition="Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),watchlisttvpanel)">WatchListTVItems2Home</include>
+					<include condition="!Window.IsActive(1124) + Substring(Skin.String(widget2list),randomaddonspanel)">RandomAddonsItems2Home</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows)">LatestEpisodesItems2</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),recenttvpanel)">LatestEpisodesItems2Home</include>
+					<include condition="Skin.HasSetting(xbmb3c)">LatestEpisodesItems2</include>
+					<include condition="Skin.HasSetting(xbmb3c) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),recenttvpanel)">LatestEpisodesItems2Home</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows)">RandomEpisodesItems2</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),randomtvpanel)">RandomEpisodesItems2Home</include>
+					<include condition="Skin.HasSetting(xbmb3c)">RandomEpisodesItems2</include>
+					<include condition="Skin.HasSetting(xbmb3c) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),randomtvpanel)">RandomEpisodesItems2Home</include>                    
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows)">WatchListTVItems2</include>
+					<include condition="!Skin.HasSetting(xbmb3c) + Library.HasContent(tvshows) + !Window.IsActive(1124) + Substring(Skin.String(widget2list),watchlisttvpanel)">WatchListTVItems2Home</include>
+                    <include condition="Skin.HasSetting(xbmb3c)">WatchListTVItems2</include>                    
+					<include condition="!Window.IsActive(1124) + Substring(Skin.String(widget2list),watchlisttvpanel)">WatchListTVItems2Home</include>
                     <include condition="System.HasAddon(script.games.rom.collection.browser) + [Window.IsActive(1124) | Substring(Skin.String(widget2list),mostplayedromspanel)]">MostPlayedRomsItems2</include>
                     <include condition="System.HasAddon(script.randomandlastitems) + [Window.IsActive(1124) | SubString(Skin.String(widget2list),7custompanel)]">Custom1Widget2</include>
                     <include condition="System.HasAddon(script.randomandlastitems) + [Window.IsActive(1124) | SubString(Skin.String(widget2list),8custompanel)]">Custom2Widget2</include>

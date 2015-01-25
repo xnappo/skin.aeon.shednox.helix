@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">3010</defaultcontrol>
+    <zorder>2</zorder>
+	<coordinates>
+		<system>1</system>
+        <left>775</left>
+        <top>0</top>
+        <width>1042</width>
+        <height>950</height>
+	</coordinates>
+	<include>dialogeffect</include>
+	<controls>
+		<control type="image">
+            <aspectratio>scale</aspectratio>
+            <texture>info/info_rightpaneltop.png</texture>
+            <colordiffuse>$VAR[DialogColorVar]</colordiffuse>
+            <include>FullscreenDimensions</include>
+        </control>
+    <!--<control type="image">
+			<left>0</left>
+			<top>0</top>
+			<width>700</width>
+			<height>500</height>
+			<texture border="40">DialogBack.png</texture>
+		</control>-->        
+		<control type="image">
+			<description>Dialog Header image</description>
+			<left>210</left>
+			<top>16</top>
+			<width>630</width>
+			<height>40</height>
+            <texture>home/nowplaying_shadow.png</texture>
+			<!--texture>dialogheader.png</texture>-->
+		</control>
+        
+		<control type="label" id="1">
+			<description>header label</description>
+			<left>210</left>
+			<top>20</top>
+			<width>630</width>
+			<height>30</height>
+			<font>font13_title</font>
+			<label>Person Info</label>
+			<align>center</align>
+			<aligny>center</aligny>
+			<textcolor>selected</textcolor>
+			<shadowcolor>black</shadowcolor>
+		</control>
+        
+        <control type="button" id="3010">
+			<description>Close Window button</description>
+			<left>620</left>
+			<top>15</top>
+			<width>64</width>
+			<height>32</height>
+			<label>-</label>
+			<font>-</font>
+			<onclick>PreviousMenu</onclick>
+			<texturefocus>DialogCloseButton-focus.png</texturefocus>
+			<texturenofocus>DialogCloseButton.png</texturenofocus>
+			<onleft>-</onleft>
+			<onright>-</onright>
+			<onup>-</onup>
+			<ondown>3002</ondown>
+		</control>
+        
+        
+		<control type="label" id="3000">
+			<description>person name</description>
+			<left>30</left>
+			<top>35</top>
+			<width>550</width>
+			<height>100</height>
+			<align>left</align>
+			<label>-</label>
+			<font>font13_title</font>
+            <textcolor>white</textcolor>
+		</control>    
+
+     <!--   <control type="image" id="3009">
+            <left>30</left>
+            <top>120</top>
+            <width>250</width>
+            <height>250</height>
+            <aspectratio>keep</aspectratio>
+        </control>        -->
+        
+		<control type="textbox" id="3001">
+			<description>text</description>
+			<left>30</left>
+			<top>100</top>
+			<width>1000</width>
+			<height>700</height>
+			<align>left</align>
+			<label>-</label>
+			<font>font13</font>
+            <pagecontrol>3005</pagecontrol>
+		</control>
+<!--        <control type="scrollbar" id="3005">
+            <left>940</left>
+            <top>100</top>
+            <width>20</width>
+            <height>280</height>
+            <texturesliderbackground border="0,14,0,14">ScrollBarV.png</texturesliderbackground>
+            <texturesliderbar border="2,16,2,16">ScrollBarV_bar.png</texturesliderbar>
+            <texturesliderbarfocus border="2,16,2,16">ScrollBarV_bar_focus.png</texturesliderbarfocus>
+            <textureslidernib>ScrollBarNib.png</textureslidernib>
+            <textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+            <onup>8</onup>
+            <onleft>3001</onleft>
+            <onright>-</onright>
+            <ondown>3002</ondown>
+            <showonepage>false</showonepage>
+            <orientation>vertical</orientation>
+        </control>        -->
+		<control type="button" id="3002">
+			<description>show media</description>
+			<left>375</left>
+			<top>900</top>
+			<width>300</width>
+			<height>40</height>
+			<align>center</align>
+			<label>Show Media</label>
+			<font>font13</font>
+        
+
+   <!--     <control type="list" id="3010">
+            <left>250</left>
+            <top>900</top>
+            <width>940</width>
+            <height>170</height>
+            <onleft>-</onleft>
+            <onright>-</onright>
+            <onup>3005</onup>
+            <ondown>3011</ondown>
+            <pagecontrol>3011</pagecontrol>
+            <scrolltime>200</scrolltime>
+            <orientation>horizontal</orientation>
+            <itemlayout width="120">
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>100</width>
+                    <height>150</height>
+                    <texture>$INFO[Listitem.Icon]</texture>
+                    <bordertexture border="5">button-nofocus.png</bordertexture>
+                    <bordersize>5</bordersize>
+                </control>
+                <control type="label">
+                    <left>0</left>
+                    <top>150</top>
+                    <width>100</width>
+                    <height>20</height>
+                    <align>left</align>
+                    <font>font10</font>
+                    <textcolor>FFFFFFFFFF</textcolor>
+                    <label>$INFO[Listitem.Label2]</label>
+                </control>                  
+            </itemlayout>
+            <focusedlayout width="120">
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>100</width>
+                    <height>150</height>
+                    <texture>$INFO[Listitem.Icon]</texture>
+                    <bordertexture border="5">button-nofocus.png</bordertexture>
+                    <bordersize>5</bordersize>
+                </control>
+                <control type="image">
+                    <left>0</left>
+                    <top>0</top>
+                    <width>100</width>
+                    <height>150</height>
+                    <texture>$INFO[Listitem.Icon]</texture>
+                    <bordertexture border="5">button-focus.png</bordertexture>
+                    <bordersize>5</bordersize>
+                    <visible>Control.HasFocus(3010)</visible>
+                </control>      
+                <control type="label">
+                    <left>0</left>
+                    <top>150</top>
+                    <width>100</width>
+                    <height>20</height>
+                    <align>left</align>
+                    <font>font10</font>
+                    <textcolor>FFFFFFFFFF</textcolor>
+                    <label>$INFO[Listitem.Label2]</label>
+                </control>  
+            </focusedlayout>
+        </control>  
+        <control type="scrollbar" id="3011">
+            <left>40</left>
+            <top>560</top>
+            <width>940</width>
+            <height>20</height>
+            <texturesliderbackground border="14,0,14,0">ScrollBarH.png</texturesliderbackground>
+            <texturesliderbar border="16,2,16,2">ScrollBarH_bar.png</texturesliderbar>
+            <texturesliderbarfocus border="16,2,16,2">ScrollBarH_bar_focus.png</texturesliderbarfocus>
+            <textureslidernib>ScrollBarNib.png</textureslidernib>
+            <textureslidernibfocus>ScrollBarNib.png</textureslidernibfocus>
+            <onup>3010</onup>
+            <showonepage>false</showonepage>
+            <orientation>horizontal</orientation>-->
+        </control>
+        
+        
+	</controls>
+</window>

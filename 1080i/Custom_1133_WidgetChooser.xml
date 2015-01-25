@@ -100,20 +100,20 @@
                             <onclick>SetProperty(CustomYesNoDialog,recentmovies,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31323])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(movies)</visible>
+                            <visible>Library.HasContent(movies) | Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31222]</label>
                             <onclick>SetProperty(CustomYesNoDialog,randommovies,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31222])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(movies)</visible>
+                            <visible>Library.HasContent(movies) | Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31872]</label>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)],featuredmoviesdefault)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31872])</onclick>
-                            <visible>Library.HasContent(movies)</visible>
+                            <visible>Library.HasContent(movies) | Skin.HasSetting(xbmb3c)</visible>
                             <onclick>Dialog.Close(1133)</onclick>
                         </item>
                         <item>
@@ -121,7 +121,7 @@
                             <onclick>SetProperty(CustomYesNoDialog,watchlistmovies,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31335])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(movies)</visible>
+                            <visible>Library.HasContent(movies) | Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31093]</label>
@@ -130,66 +130,64 @@
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31336])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
                             <visible>Library.HasContent(movies) + System.HasAddon(script.metadata.actors)</visible>
+                            <visible>Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31324]</label>
                             <onclick>SetProperty(CustomYesNoDialog,recenttv,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31324])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(tvshows)</visible>
+                            <visible>Library.HasContent(tvshows) | Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31220]</label>
                             <onclick>SetProperty(CustomYesNoDialog,randomtv,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31220])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(tvshows)</visible>
+                            <visible>Library.HasContent(tvshows) | Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31464]</label>
                             <onclick>SetProperty(CustomYesNoDialog,watchlisttv,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31464])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(tvshows)</visible>
-                        </item>
+                            <visible>Library.HasContent(tvshows) | Skin.HasSetting(xbmb3c)</visible>                        </item>
                         <item>
                             <label>31819</label>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31819])</onclick>
                             <onclick>SetProperty(CustomYesNoDialog,nextairedtv,1124)</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(tvshows)</visible>
-                        </item>
+                            <visible>Library.HasContent(tvshows) | Skin.HasSetting(xbmb3c)</visible>                        </item>
                         <item>
                             <label>$LOCALIZE[31873]</label>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)],featuredtvdefault)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31873])</onclick>
-                            <visible>Library.HasContent(tvshows)</visible>
-                            <onclick>Dialog.Close(1133)</onclick>
+                            <visible>Library.HasContent(tvshows) | Skin.HasSetting(xbmb3c)</visible>                            <onclick>Dialog.Close(1133)</onclick>
                         </item>
                         <item>
                             <label>$LOCALIZE[31359]</label>
                             <onclick>SetProperty(CustomYesNoDialog,recentalbums,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31359])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(music)</visible>
+                            <visible>Library.HasContent(music) | Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31068]</label>
                             <onclick>SetProperty(CustomYesNoDialog,randomalbums,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31068])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
-                            <visible>Library.HasContent(music)</visible>
+                            <visible>Library.HasContent(music) | Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31874]</label>
-                            <visible>Library.HasContent(music)</visible>
+                            <visible>Library.HasContent(music) | Skin.HasSetting(xbmb3c)</visible>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)],featuredmusicdefault)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31068])</onclick>
                             <onclick>Dialog.Close(1133)</onclick>
                         </item>
                         <item>
                             <label>$LOCALIZE[31326]</label>
-                            <visible>Library.HasContent(music)</visible>
+                            <visible>Library.HasContent(music) | Skin.HasSetting(xbmb3c)</visible>
                             <onclick>SetProperty(CustomYesNoDialog,watchlistalbums,1124)</onclick>
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31326])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
@@ -207,6 +205,7 @@
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31081])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
                             <visible>Library.HasContent(MusicVideos)</visible>
+                            <visible>Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31091]</label>
@@ -214,6 +213,7 @@
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31091])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
                             <visible>Library.HasContent(MusicVideos)</visible>
+                            <visible>Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>31712</label>
@@ -221,6 +221,7 @@
                             <onclick>Skin.SetString(ItemToEdit.$INFO[Window(1124).Property(WidgetSelection)]Title,$LOCALIZE[31712])</onclick>
                             <onclick>ActivateWindow(1137)</onclick>
                             <visible>Library.HasContent(MusicVideos)</visible>
+                            <visible>Skin.HasSetting(xbmb3c)</visible>
                         </item>
                         <item>
                             <label>$LOCALIZE[31070]</label>

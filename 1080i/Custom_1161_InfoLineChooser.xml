@@ -96,25 +96,25 @@
                         <label>31502</label>
                         <onclick>Skin.SetString(ItemToEdit.InfoLine,movies)</onclick>
                         <onclick>Dialog.Close(1161)</onclick>
-                        <visible>Library.HasContent(movies)</visible>
+                        <visible>Library.HasContent(movies) | Skin.HasSetting(xbmb3c)</visible>
                     </item>
                     <item>
                         <label>31503</label>
                         <onclick>Skin.SetString(ItemToEdit.InfoLine,tvshows)</onclick>
                         <onclick>Dialog.Close(1161)</onclick>
-                        <visible>Library.HasContent(tvshows)</visible>
+                        <visible>Library.HasContent(tvshows) | Skin.HasSetting(xbmb3c)</visible>
                     </item>
                     <item>
                         <label>31501</label>
                         <onclick>Skin.SetString(ItemToEdit.InfoLine,music)</onclick>
                         <onclick>Dialog.Close(1161)</onclick>
-                        <visible>Library.HasContent(music)</visible>
+                        <visible>Library.HasContent(music) | Skin.HasSetting(xbmb3c)</visible>
                     </item>
                     <item>
                         <label>20389</label>
                         <onclick>Skin.SetString(ItemToEdit.InfoLine,musicvideos)</onclick>
                         <onclick>Dialog.Close(1161)</onclick>
-                        <visible>Library.HasContent(musicvideos)</visible>
+                        <visible>Library.HasContent(musicvideos) | Skin.HasSetting(xbmb3c)</visible>
                     </item>
                     <item>
                         <label>31509</label>
@@ -142,7 +142,7 @@
                         <label>31819</label>
                         <onclick>Skin.SetString(ItemToEdit.InfoLine,nextaired)</onclick>
                         <onclick>Dialog.Close(1161)</onclick>
-                        <visible>Library.HasContent(tvshows)</visible>
+                        <visible>Library.HasContent(tvshows) | Skin.HasSetting(xbmb3c)</visible>
                     </item>
                     <item>
                         <label>31358</label>

@@ -277,13 +277,13 @@
 					<texture background="true" diffuse="thumbs/ExtraOverlayWatchedtripanel.png">$VAR[VideoextrasOverlay]</texture>
 					<visible>System.HasAddon(script.videoextras)</visible>
 				</control>
-				<control type="image">
-					<left>12</left>
-					<width>640</width>
-					<height>980</height>
-					<aspectratio align="center" scalediffuse="false">scale</aspectratio>
+                <!--control type="image">
+                    <top>26</top>
+                    <width>665</width>
+                    <height>931</height>
+                    <aspectratio align="top" scalediffuse="false">stretch</aspectratio>
 					<texture>views/tripanel/poster_overlay.png</texture>
-				</control>
+                </control-->
 			</control>
 			<control type="group" id="5203">
 				<left>1335</left>

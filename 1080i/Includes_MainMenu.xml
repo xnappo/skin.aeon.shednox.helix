@@ -473,53 +473,69 @@
     <include name="DefaultMusicSubMenu">
         <item>
             <label>133</label>
-            <onclick>ActivateWindow(MusicLibrary,Artists,return)</onclick>
-            <visible>Library.HasContent(Music)</visible>
+            <onclick condition="!Skin.HasSetting(xbmb3cmusic)">ActivateWindow(MusicLibrary,Artists,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3cmusic)">$INFO[Window(Home).Property(xbmb3c.std.music.0.path)]</onclick>            
+            <visible>Skin.HasSetting(xbmb3cmusic) | Library.HasContent(Music)</visible>
             <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub1))</visible>
         </item>
         <item>
             <label>132</label>
             <onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
             <visible>Library.HasContent(Music)</visible>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub2))</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub2))</visible>
+        </item>
+        <item>
+            <label>Recent</label>
+            <onclick condition="Skin.HasSetting(xbmb3cmusic)">$INFO[Window(Home).Property(xbmb3c.std.music.1.path)]</onclick>            
+            <visible>Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub2))</visible>
         </item>
         <item>
             <label>134</label>
             <onclick>ActivateWindow(MusicLibrary,Songs,return)</onclick>
             <visible>Library.HasContent(Music)</visible>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub3))</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub3))</visible>
+        </item>
+        <item>
+            <label>Frequent</label>
+            <onclick condition="Skin.HasSetting(xbmb3cmusic)">$INFO[Window(Home).Property(xbmb3c.std.music.2.path)]</onclick>            
+            <visible>Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub3))</visible>
         </item>
         <item>
             <label>744</label>
             <onclick>ActivateWindow(MusicFiles)</onclick>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub4))</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub4))</visible>
+        </item>
+        <item>
+            <label>Videos</label>
+            <onclick condition="Skin.HasSetting(xbmb3cmusic)">$INFO[Window(Home).Property(xbmb3c.std.music.3.path)]</onclick>            
+            <visible>Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub4))</visible>
         </item>
         <item>
             <label>14022</label>
             <onclick>ActivateWindow(MusicLibrary)</onclick>
             <visible>Library.HasContent(Music)</visible>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub5))</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub5))</visible>
         </item>
         <item>
             <label>24001</label>
             <onclick condition="Library.HasContent(Music)">ActivateWindow(MusicLibrary,Addons,return)</onclick>
             <onclick condition="!Library.HasContent(Music)">ActivateWindow(MusicFiles,Addons,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub7))</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub7))</visible>
         </item>
         <item>
             <label>$LOCALIZE[31040]</label>
             <onclick>ActivateWindow(500)</onclick>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub8)) + Player.HasAudio</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub8)) + Player.HasAudio</visible>
         </item>
         <item>
             <label>31334</label>
             <onclick>ActivateWindow(MusicLibrary,RecentlyAddedAlbums)</onclick>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub9))</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub9))</visible>
         </item>
         <item>
             <label>31333</label>
             <onclick>ActivateWindow(MusicLibrary,RecentlyPlayedAlbums)</onclick>
-            <visible>Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub10))</visible>
+            <visible>!Skin.HasSetting(xbmb3cmusic) + Substring(Control.GetLabel(4327),music) + IsEmpty(Skin.String(MusicSub10))</visible>
         </item>
     </include>
     <include name="DefaultVideosSubMenu">
@@ -640,7 +656,7 @@
             <label>$LOCALIZE[31284]</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
             <onclick>RunScript(script.cinema.experience,movietitles)</onclick>
-            <visible>Substring(Control.GetLabel(4327),movie)</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie)</visible>
         </item>
     </include>
     <include name="RandomMovieScriptButton">
@@ -655,20 +671,23 @@
         <item>
             <label>$LOCALIZE[31162]</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
-            <onclick condition="!IsEmpty(Skin.String(HomeMenuSubMoviesTrailer))">RunAddon($INFO[Skin.String(HomeMenuSubMoviesTrailer)])</onclick>
-            <onclick condition="IsEmpty(Skin.String(HomeMenuSubMoviesTrailer))">Skin.SetAddon(HomeMenuSubMoviesTrailer,xbmc.addon.video)</onclick>
+            <onclick condition="!Skin.HasSetting(xbmb3c) + !IsEmpty(Skin.String(HomeMenuSubMoviesTrailer))">RunAddon($INFO[Skin.String(HomeMenuSubMoviesTrailer)])</onclick>
+            <onclick condition="!Skin.HasSetting(xbmb3c) + IsEmpty(Skin.String(HomeMenuSubMoviesTrailer))">Skin.SetAddon(HomeMenuSubMoviesTrailer,xbmc.addon.video)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.movies.5.path)]</onclick>
             <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub2))</visible>
         </item>
         <item>
             <label>369</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
-            <onclick>ActivateWindow(Videos,MovieTitles,return)</onclick>
+            <onclick condition="!Skin.HasSetting(xbmb3c)">ActivateWindow(Videos,MovieTitles,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.movies.0.path)]</onclick>
             <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub4))</visible>
         </item>
         <item>
             <label>31334</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
-            <onclick>ActivateWindow(Videos,RecentlyAddedMovies,return)</onclick>
+            <onclick condition="!Skin.HasSetting(xbmb3c)">ActivateWindow(Videos,RecentlyAddedMovies,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.movies.1.path)]</onclick>
             <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub3))</visible>
         </item>
 		<item>
@@ -676,46 +695,54 @@
 			<label>Search</label>
 			<onclick>ActivateWindow(VideoLibrary,movietitles,Return)</onclick>
 			<onclick>SendClick(8)</onclick>
-			<visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub5))</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub5))</visible>
 		</item>
         <item>
             <label>135</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
             <onclick>ActivateWindow(Videos,MovieGenres,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub5))</visible>
+            <visible>Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub5))</visible>
         </item>
         <item>
             <label>652</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
             <onclick>ActivateWindow(Videos,MovieYears,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub6))</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub6))</visible>
+        </item>
+        <item>
+            <label>Favorites</label>
+            <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
+            <onclick>ActivateWindow(Videos,MovieYears,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.movies.3.path)]</onclick>
+            <visible>Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub6))</visible>
         </item>
         <item>
             <label>344</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
             <onclick>SetProperty(BrowseActors,true,home)</onclick>
             <onclick>ActivateWindow(Videos,MovieActors,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub7))</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub7))</visible>
         </item>
         <item>
             <label>20348</label>
             <onclick>SetProperty(BrowseActors,true,home)</onclick>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
             <onclick>ActivateWindow(Videos,MovieDirectors,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub8))</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub8))</visible>
         </item>
         <item>
             <label>24069</label>
             <onclick>UpdateLibrary(video)</onclick>
-            <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub9))</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub9))</visible>
         </item>
         <item>
             <label>31845</label>
             <onclick>SetProperty(DontRunTVShowScripts,True,Home)</onclick>
-            <onclick>ActivateWindow(Videos,MovieSets,return)</onclick>
+            <onclick condition="!Skin.HasSetting(xbmb3c)">ActivateWindow(videos,moviesets,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.movies.4.path)]</onclick>
             <visible>Substring(Control.GetLabel(4327),movie) + IsEmpty(Skin.String(MoviesSub11))</visible>
         </item>
-        <include condition="System.HasAddon(script.randommovie) + IsEmpty(Skin.String(MoviesSub10))">RandomMovieScriptButton</include>
+        <include condition="!Skin.HasSetting(xbmb3c) + System.HasAddon(script.randommovie) + IsEmpty(Skin.String(MoviesSub10))">RandomMovieScriptButton</include>
     </include>
     <include name="DefaultSubLiveTV">
         <item>
@@ -742,45 +769,52 @@
     <include name="DefaultTVShowsSubMenu">
         <item>
             <label>369</label>
-            <onclick>ActivateWindow(Videos,TVShowTitles,return)</onclick>
+            <onclick condition="!Skin.HasSetting(xbmb3c)">ActivateWindow(Videos,TVShowTitles,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.tvshows.0.path)]</onclick>
             <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub1))</visible>
         </item>
         <item>
             <label>135</label>
             <onclick>ActivateWindow(Videos,TVShowGenres,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub3))</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub3))</visible>
+        </item>
+        <item>
+            <label>In Progress</label>
+            <onclick>$INFO[Window(Home).Property(xbmb3c.std.tvshows.2.path)]</onclick>
+            <visible>Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub3))</visible>
         </item>
         <item>
             <label>31334</label>
-            <onclick>ActivateWindow(Videos,RecentlyAddedEpisodes,return)</onclick>
+            <onclick condition="!Skin.HasSetting(xbmb3c)">ActivateWindow(Videos,RecentlyAddedEpisodes,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.tvshows.1.path)]</onclick>
             <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub4))</visible>
         </item>
 		<item>
-			<description>Search</description>
-			<label>Search</label>
-			<onclick>ActivateWindow(VideoLibrary,TVShowtitles,Return)</onclick>
-			<onclick>SendClick(8)</onclick>
-			<visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub4))</visible>
+            <label>NextUp</label>
+            <onclick condition="!Skin.HasSetting(xbmb3c)">ActivateWindow(Videos,library://video/inprogressshows.xml,return)</onclick>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.tvshows.3.path)]</onclick>
+            <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub8))</visible>
 		</item>
         <item>
-            <label>575</label>
-            <onclick>ActivateWindow(Videos,library://video/inprogressshows.xml,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub8))</visible>
+            <label condition="!Skin.HasSetting(xbmb3c)">652</label>
+            <onclick condition="!Skin.HasSetting(xbmb3c)">ActivateWindow(Videos,TVShowYears,return)</onclick>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub5))</visible>
         </item>
         <item>
-            <label>652</label>
-            <onclick>ActivateWindow(Videos,TVShowYears,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub5))</visible>
+            <label condition="Skin.HasSetting(xbmb3c)">Favorites</label>
+            <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.tvshows.4.path)]</onclick>
+            <visible>Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub5))</visible>
         </item>
         <item>
             <label>344</label>
             <onclick>SetProperty(BrowseActors,true,home)</onclick>
             <onclick>ActivateWindow(Videos,TVShowActors,return)</onclick>
-            <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub6))</visible>
+            <visible>!Skin.HasSetting(xbmb3c) + Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub6))</visible>
         </item>
         <item>
-            <label>31243</label>
-            <onclick>RunAddon(script.tv.show.next.aired)</onclick>
+            <label>Upcoming</label>
+             <onclick condition="!Skin.HasSetting(xbmb3c)">RunAddon(script.tv.show.next.aired)</onclick>
+             <onclick condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(xbmb3c.std.tvshows.6.path)]</onclick>
             <visible>Substring(Control.GetLabel(4327),tv) + IsEmpty(Skin.String(TVShowsSub7))</visible>
         </item>
     </include>
@@ -855,42 +889,6 @@
 			<onclick>SetProperty($INFO[Window(home).Property(MenuName)],YoutubeHomeItem,home)</onclick>
 			<onclick>SetFocus(9006)</onclick>
 			<icon fallback="special://skin/backgrounds/youtube/">$INFO[Skin.String(YoutubeHomeItem.MultiFanart)]</icon>
-		</item>
-	</include>
-		<include name="OscarsMainMenu">
-		<item id="115">
-			<label fallback="Oscars">$INFO[Skin.String(OscarsHomeItem.Label)]</label>
-			<property name="Path" fallback="RunScript(script.oscars.view)">$INFO[Skin.String(OscarsHomeItem.Path)]</property>
-			<property name="Type" fallback="custom">$INFO[Skin.String(OscarsHomeItem.Type)]</property>
-			<property name="SubMenu" fallback="none">$INFO[Skin.String(OscarsHomeItem.SubMenu)]</property>
-			<property name="InfoLine" fallback="none">$INFO[Skin.String(OscarsHomeItem.InfoLine)]</property>
-			<property name="BigIcon" fallback="special://skin/extras/BigIcons/oscars.png">$INFO[Skin.String(OscarsHomeItem.Icon)]</property>
-			<property name="DisableIcon">$INFO[Skin.String(OscarsHomeItem.Disable)]</property>
-			<property name="Widget2Title">$INFO[Skin.String(OscarsHomeItem.Widget2Title)]</property>
-			<property name="WidgetTitle">$INFO[Skin.String(OscarsHomeItem.WidgetTitle)]</property>
-			<property name="Widget2">$INFO[Skin.String(OscarsHomeItem.Widget2)]</property>
-			<property name="Widget">$INFO[Skin.String(OscarsHomeItem.Widget)]</property>
-			<onclick>SetProperty($INFO[Window(home).Property(MenuName)],OscarsHomeItem,home)</onclick>
-			<onclick>SetFocus(9006)</onclick>
-			<icon fallback="special://skin/backgrounds/oscars/">$INFO[Skin.String(OscarsHomeItem.MultiFanart)]</icon>
-		</item>
-	</include>
-	<include name="Top250MainMenu">
-		<item id="116">
-			<label fallback="Top250">$INFO[Skin.String(Top250HomeItem.Label)]</label>
-			<property name="Path" fallback="RunScript(script.imdb250.view)">$INFO[Skin.String(Top250HomeItem.Path)]</property>
-			<property name="Type" fallback="custom">$INFO[Skin.String(Top250HomeItem.Type)]</property>
-			<property name="SubMenu" fallback="none">$INFO[Skin.String(Top250HomeItem.SubMenu)]</property>
-			<property name="InfoLine" fallback="none">$INFO[Skin.String(Top250HomeItem.InfoLine)]</property>
-			<property name="BigIcon" fallback="special://skin/extras/BigIcons/top250.png">$INFO[Skin.String(Top250HomeItem.Icon)]</property>
-			<property name="DisableIcon">$INFO[Skin.String(Top250HomeItem.Disable)]</property>
-			<property name="Widget2Title">$INFO[Skin.String(Top250HomeItem.Widget2Title)]</property>
-			<property name="WidgetTitle">$INFO[Skin.String(Top250HomeItem.WidgetTitle)]</property>
-			<property name="Widget2">$INFO[Skin.String(Top250HomeItem.Widget2)]</property>
-			<property name="Widget">$INFO[Skin.String(Top250HomeItem.Widget)]</property>
-			<onclick>SetProperty($INFO[Window(home).Property(MenuName)],Top250HomeItem,home)</onclick>
-			<onclick>SetFocus(9006)</onclick>
-			<icon fallback="special://skin/backgrounds/top250/">$INFO[Skin.String(Top250HomeItem.MultiFanart)]</icon>
 		</item>
 	</include>
     <include name="SearchMainMenu">
@@ -999,12 +997,30 @@
             <onclick>SetProperty($INFO[Window(home).Property(MenuName)],TVShowHomeItem,home)</onclick>
             <onclick>SetFocus(9006)</onclick>
             <icon fallback="special://skin/backgrounds/tvshows/">$INFO[Skin.String(TVShowHomeItem.MultiFanart)]</icon>
+            <visible>!Skin.HasSetting(xbmb3c)</visible>
+        </item>
+        <item id="11">
+            <label fallback="31503">$INFO[Skin.String(TVShowHomeItem.Label)]</label>
+            <property name="Path" fallback="ActivateWindow(Videos,TVShowTitles,return)">$INFO[Window(Home).Property(xbmb3c.std.tvshows.0.path)]</property>
+            <property name="Type" fallback="custom">$INFO[Skin.String(TVShowHomeItem.Type)]</property>
+            <property name="SubMenu" fallback="tv">$INFO[Skin.String(TVShowHomeItem.SubMenu)]</property>
+            <property name="InfoLine" fallback="tvshows">$INFO[Skin.String(TVShowHomeItem.InfoLine)]</property>
+            <property name="BigIcon" fallback="special://skin/extras/BigIcons/Television.png">$INFO[Skin.String(TVShowHomeItem.Icon)]</property>
+            <property name="DisableIcon">$INFO[Skin.String(TVShowHomeItem.Disable)]</property>
+            <property name="Widget2Title">$INFO[Skin.String(TVShowHomeItem.Widget2Title)]</property>
+            <property name="WidgetTitle">$INFO[Skin.String(TVShowHomeItem.WidgetTitle)]</property>
+            <property name="Widget2">$INFO[Skin.String(TVShowHomeItem.Widget2)]</property>
+            <property name="Widget">$INFO[Skin.String(TVShowHomeItem.Widget)]</property>
+            <onclick>SetProperty($INFO[Window(home).Property(MenuName)],TVShowHomeItem,home)</onclick>
+            <onclick>SetFocus(9006)</onclick>
+            <icon fallback="special://skin/backgrounds/tvshows/">$INFO[Skin.String(TVShowHomeItem.MultiFanart)]</icon>
+            <visible>Skin.HasSetting(xbmb3c)</visible>
         </item>
     </include>
     <include name="MoviesMainMenu">
         <item id="10">
             <label fallback="31502">$INFO[Skin.String(MovieHomeItem.Label)]</label>
-            <property name="Path" fallback="ActivateWindow(Videos,MovieTitles,return)">$INFO[Skin.String(MovieHomeItem.Path)]</property>
+            <property name="Path" fallback="ActivateWindow(Videos,MovieTitles,return)">ActivateWindow(Videos,MovieTitles,return)</property>
             <property name="Type" fallback="custom">$INFO[Skin.String(MovieHomeItem.Type)]</property>
             <property name="SubMenu" fallback="movies">$INFO[Skin.String(MovieHomeItem.SubMenu)]</property>
             <property name="InfoLine" fallback="movies">$INFO[Skin.String(MovieHomeItem.InfoLine)]</property>
@@ -1017,12 +1033,30 @@
             <onclick>SetProperty($INFO[Window(home).Property(MenuName)],MovieHomeItem,home)</onclick>
             <onclick>SetFocus(9006)</onclick>
             <icon fallback="special://skin/backgrounds/movies/">$INFO[Skin.String(MovieHomeItem.MultiFanart)]</icon>
+            <visible>!Skin.HasSetting(xbmb3c)</visible>
+        </item>
+        <item id="10">
+            <label fallback="31502">$INFO[Skin.String(MovieHomeItem.Label)]</label>
+            <property name="Path" fallback="ActivateWindow(Videos,MovieTitles,return)">$INFO[Window(Home).Property(xbmb3c.std.movies.0.path)]</property>
+            <property name="Type" fallback="custom">$INFO[Skin.String(MovieHomeItem.Type)]</property>
+            <property name="SubMenu" fallback="movies">$INFO[Skin.String(MovieHomeItem.SubMenu)]</property>
+            <property name="InfoLine" fallback="movies">$INFO[Skin.String(MovieHomeItem.InfoLine)]</property>
+            <property name="BigIcon" fallback="special://skin/extras/BigIcons/Film.png">$INFO[Skin.String(MovieHomeItem.Icon)]</property>
+            <property name="DisableIcon">$INFO[Skin.String(MovieHomeItem.Disable)]</property>
+            <property name="Widget2Title">$INFO[Skin.String(MovieHomeItem.Widget2Title)]</property>
+            <property name="WidgetTitle">$INFO[Skin.String(MovieHomeItem.WidgetTitle)]</property>
+            <property name="Widget2">$INFO[Skin.String(MovieHomeItem.Widget2)]</property>
+            <property name="Widget">$INFO[Skin.String(MovieHomeItem.Widget)]</property>
+            <onclick>SetProperty($INFO[Window(home).Property(MenuName)],MovieHomeItem,home)</onclick>
+            <onclick>SetFocus(9006)</onclick>
+            <icon fallback="special://skin/backgrounds/movies/">$INFO[Skin.String(MovieHomeItem.MultiFanart)]</icon>
+            <visible>Skin.HasSetting(xbmb3c)</visible>
         </item>
     </include>
     <include name="MusicMainMenu">
         <item id="3">
             <label fallback="31501">$INFO[Skin.String(MusicHomeItem.Label)]</label>
-            <property name="Path" fallback="ActivateWindow(music)">$INFO[Skin.String(MusicHomeItem.Path)]</property>
+            <property name="Path" fallback="ActivateWindow(music)">ActivateWindow(music)</property>
             <property name="Type" fallback="custom">$INFO[Skin.String(MusicHomeItem.Type)]</property>
             <property name="SubMenu" fallback="music">$INFO[Skin.String(MusicHomeItem.SubMenu)]</property>
             <property name="InfoLine" fallback="music">$INFO[Skin.String(MusicHomeItem.InfoLine)]</property>
@@ -1035,6 +1069,24 @@
             <onclick>SetProperty($INFO[Window(home).Property(MenuName)],MusicHomeItem,home)</onclick>
             <onclick>SetFocus(9006)</onclick>
             <icon fallback="special://skin/backgrounds/music/">$INFO[Skin.String(MusicHomeItem.MultiFanart)]</icon>
+            <visible>!Skin.HasSetting(xbmb3cmusic)</visible>
+            </item>
+        <item id="3">
+            <label fallback="31501">$INFO[Skin.String(MusicHomeItem.Label)]</label>
+            <property name="Path" fallback="ActivateWindow(music)">$INFO[Window(Home).Property(xbmb3c.std.music.0.path)]</property>
+            <property name="Type" fallback="custom">$INFO[Skin.String(MusicHomeItem.Type)]</property>
+            <property name="SubMenu" fallback="music">$INFO[Skin.String(MusicHomeItem.SubMenu)]</property>
+            <property name="InfoLine" fallback="music">$INFO[Skin.String(MusicHomeItem.InfoLine)]</property>
+            <property name="BigIcon" fallback="special://skin/extras/BigIcons/Headphone.png">$INFO[Skin.String(MusicHomeItem.Icon)]</property>
+            <property name="DisableIcon">$INFO[Skin.String(MusicHomeItem.Disable)]</property>
+            <property name="Widget2Title">$INFO[Skin.String(MusicHomeItem.Widget2Title)]</property>
+            <property name="WidgetTitle">$INFO[Skin.String(MusicHomeItem.WidgetTitle)]</property>
+            <property name="Widget2">$INFO[Skin.String(MusicHomeItem.Widget2)]</property>
+            <property name="Widget">$INFO[Skin.String(MusicHomeItem.Widget)]</property>
+            <onclick>SetProperty($INFO[Window(home).Property(MenuName)],MusicHomeItem,home)</onclick>
+            <onclick>SetFocus(9006)</onclick>
+            <icon fallback="special://skin/backgrounds/music/">$INFO[Skin.String(MusicHomeItem.MultiFanart)]</icon>
+            <visible>Skin.HasSetting(xbmb3cmusic)</visible>
         </item>
     </include>
     <include name="MusicVideosMainMenu">
@@ -1386,8 +1438,6 @@
             <include condition="IsEmpty(Skin.String(FavouritesHomeItem.Disable))">FavoritesMainMenu</include>
             <include condition="IsEmpty(Skin.String(WeatherHomeItem.Disable))">WeatherMainMenu</include>
 			<include condition="IsEmpty(Skin.String(YoutubeHomeItem.Disable))">YoutubeMainMenu</include>
-			<include condition="IsEmpty(Skin.String(OscarsHomeItem.Disable))">OscarsMainMenu</include>
-			<include condition="IsEmpty(Skin.String(Top250HomeItem.Disable))">Top250MainMenu</include>
         </content>
     </include>
     <include name="SubMenuListContent">

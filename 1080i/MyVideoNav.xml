@@ -186,8 +186,6 @@
 				<include condition="IsEmpty(Skin.String(DisableEpisodeVL))">Viewtype_Episode</include>
 				<include condition="IsEmpty(Skin.String(DisablePanelVL))">Panel</include>
 				<include condition="IsEmpty(Skin.String(DisableInfoPanelVL))">Viewtype_FullscreenPanel</include>
-				<include>Oscars</include>
-				<include>IMDb250</include>
 			</control>
 			<control type="button" id="1970">
 				<include>HiddenObject</include>

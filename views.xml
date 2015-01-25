@@ -1,0 +1,16 @@
+﻿<views>
+    <view id="List" value="50" />
+    <view id="TriPanel" value="52" />
+    <view id="Landscape" value="503" />
+    <view id="Panel" value="550" />
+    <view id="BannerPlex" value="508" />
+    <view id="Posters" value="510" />
+    <view id="Low List" value="511" />
+    <view id="Episode" value="514" />    
+    <view id="BigFan" value="516" />    
+    <view id="InfoPanel" value="518" />    
+    <view id="Showcase" value="501" />
+    <view id="Shift" value="57" />
+    <view id="Info Wall" value="512" />
+    <view id="Wall" value="500" />
+</views>

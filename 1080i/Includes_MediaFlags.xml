@@ -224,13 +224,6 @@
         <texture>views/tripanel/upright.png</texture>
         <colordiffuse>$VAR[ColorDiffuseVar]</colordiffuse>
     </include>
-	<include name="Furniture_FlagUpright1">
-        <width>2</width>
-        <height>71</height>
-       	<texture colordiffuse="$INFO[Window(home).Property(VideoInfo.ImageColor)]">views/tripanel/upright.png</texture>
-    </include>
-	
-	
     <include name="AudioFlagsVars">
         <width>135</width>
         <height>64</height>
@@ -242,11 +235,19 @@
     <include name="FloorFlags">
         <control type="group">
             <include>Animation_FlagSlideDown</include>
+            
+			<!-- Un-comment this and the next line to remove the movie floor flags
             <visible>Control.IsVisible(550) | Control.IsVisible(508) | [Control.IsVisible(503) + !Skin.HasSetting(landscapeonelogo)]  | Control.IsVisible(501) | Control.IsVisible(500) | Control.IsVisible(512) | Control.IsVisible(516)</visible>
             <visible>![SubString(Container.FolderPath,addons://) | SubString(Container.FolderPath,plugin.video)]</visible>
+			-->
+            
+			<!-- <visible> Container.Content(movies) | !Container.Content(series) </visible> + (Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons))-->
+			<visible> !Control.IsVisible(57) + !Control.IsVisible(510) + !Control.IsVisible(52)  </visible>
+			
+			
             <top>1000</top>
             <control type="group">
-                <visible>!ListItem.IsFolder</visible>
+                <visible>!ListItem.IsFolder + !Container.Content(episodes) + !Container.Content(videos)</visible>
                 <animation effect="slide" time="560" start="0,300" end="0,0" tween="cubic">Visible</animation>
                 <animation effect="slide" time="250" end="0,400" tween="cubic" easing="in">Hidden</animation>
                 <control type="group">
@@ -369,7 +370,10 @@
                 </control>
             </control>
             <control type="group">
-                <visible>[[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(ListItem.TVShowTitle)]</visible>
+                
+				<!--<visible>[[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(ListItem.TVShowTitle)]</visible> -->
+				<visible>[!Control.IsVisible(57) +!Control.IsVisible(510) +!Control.IsVisible(52) + !Container.Content(episodes) + !Container.Content(movies)]</visible>
+				
                 <animation effect="slide" time="560" start="0,300" end="0,0" tween="cubic">Visible</animation>
                 <animation effect="slide" time="250" end="0,400" tween="cubic" easing="in">Hidden</animation>
                 <control type="group">
