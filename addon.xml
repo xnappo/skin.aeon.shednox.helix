@@ -3,17 +3,17 @@
   <requires>
     <import addon="xbmc.gui" version="5.3.0"/>
     <import addon="service.skin.widgets" version="0.0.27"/>
-    <import addon="script.favourites" version="4.0.9" />
-    <import addon="script.artistslideshow" version="1.5.0" />
-    <import addon="script.videolanguage" version="0.1.0" />
-    <import addon="script.randomandlastitems" version="2.1.2" />    
+    <import addon="script.favourites" version="4.0.9"/>
+    <import addon="script.artistslideshow" version="1.5.0"/>
+    <import addon="script.videolanguage" version="0.1.0"/>
+    <import addon="script.randomandlastitems" version="2.1.2"/>
   </requires>
   <extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" debugging="false" effectslowdown="1.0">
     <res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
   </extension>
   <extension point="xbmc.addon.metadata">
-    <summary lang="en">Aeon Nox 4.1.9 Gotham by Big_Noid &amp; phil65</summary>
-    <description lang="en">Aeon Nox is an artwork-intense XBMC skin with an endless amount of customization possibilites. There are many different views and options to present your media in the way you want it. The home window is fully customizable, you can re-order main menu items, assign submenus and widgets to them or change the overall look with different styles and themes. A skin which perfectly adapts to your needs.It is based on the design of Aeon by djh_. A great deal of textures used are from Aeon and its mods. All credits to the creators of these skins and mods.</description>
+    <summary lang="en">Aeon Nox 4 for MediaBrowser</summary>
+    <description lang="en">Aeon Nox 4 for MediaBrowser</description>
     <disclaimer lang="en">Not recommended for low-end platforms (Raspberry PI, AppleTV, Android devices)</disclaimer>
     <platform>all</platform>
     <source>https://github.com/WarLion/skin.Aeon-Nox-4.1.9</source>
