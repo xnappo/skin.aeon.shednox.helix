@@ -1,23 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<addon id="skin.aeon.shednox.helix" version="1.1.3" name="Aeon Shednox Helix"  provider-name="Big_Noid|phil65|xnappo">
-  <requires>
-    <import addon="xbmc.gui" version="5.3.0"/>
-    <import addon="service.skin.widgets" version="0.0.27"/>
-    <import addon="script.favourites" version="4.0.9"/>
-    <import addon="script.artistslideshow" version="1.5.0"/>
-    <import addon="script.videolanguage" version="0.1.0"/>
-    <import addon="script.randomandlastitems" version="2.1.2"/>
-  </requires>
-  <extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" debugging="false" effectslowdown="1.0">
-    <res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Aeon Nox 4 for MediaBrowser</summary>
-    <description lang="en">Aeon Nox 4 for MediaBrowser</description>
-    <disclaimer lang="en">Not recommended for low-end platforms (Raspberry PI, AppleTV, Android devices)</disclaimer>
-    <platform>all</platform>
-    <source>https://github.com/WarLion/skin.Aeon-Nox-4.1.9</source>
-    <forum>http://forum.xbmc.org/showthread.php?tid=185290</forum>
-    <website>https://github.com/WarLion/skin.Aeon-Nox-4.1.9</website>
-  </extension>
+<?xml version="1.0" encoding="UTF-8"?>
+<addon
+	id="skin.aeon.shednox.helix"
+	version="1.1.4"
+	name="AeonNox 4(Helix)"
+	provider-name="noid">
+	<requires>
+		<import version="5.3.0" addon="xbmc.gui"/>
+		<import addon="script.artwork.downloader" version="12.0.29" />
+		<import addon="script.artistslideshow" version="1.6.9" />
+		<import addon="service.skin.widgets" version="0.0.25"/>
+		<import addon="script.grab.fanart" version="0.13.0"/>
+		<import addon="script.skinshortcuts" version="0.4.4"/>
+		<import addon="script.extendedinfo" version="2.0.1"/>
+	</requires>
+	<extension
+    point="xbmc.gui.skin"
+    defaultthemename="Textures.xbt"
+    debugging="false">		
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="1080i" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Aeon Nox</summary>
+		<summary lang="en_US">Aeon Nox</summary>
+		<description lang="en">Aeon Nox</description>
+		<description lang="en_US">Aeon Nox</description>
+		<platform>all</platform>
+		<license>GPL v2.0</license>
+		<forum>http://www.mediabrowser.tv</forum>
+		<website></website>
+		<email></email>
+		<source></source>
+	</extension>
 </addon>
