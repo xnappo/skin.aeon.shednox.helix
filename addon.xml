@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<addon id="skin.aeon.shednox.helix" version="2.0" name="Aeon Shednox Helix" provider-name="Shednox|Brimstone">
+<addon id="skin.aeon.shednox.helix" version="1.1.5" name="Aeon Shednox Helix" provider-name="Shednox|Brimstone">
   <requires>
     <import addon="xbmc.gui" version="5.0.2"/>
     <import addon="script.favourites" version="6.0.1"/>
