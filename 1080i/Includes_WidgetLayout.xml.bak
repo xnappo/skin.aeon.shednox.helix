@@ -2809,16 +2809,15 @@
 				</control> 				
 			    <control type="group">
 					<top>55</top>
-					<left>-35</left>
+					<left>-30</left>
 					<visible>Substring(Window(home).Property(WidgetType),tv) + Skin.HasSetting(CasesonWidgets)</visible>					
 					<control type="image">
-						<left>27</left>
+						<left>30</left>
 						<top>-405</top>
-						<width>468</width>
-						<height>696</height>
+						<width>463</width>
+						<height>690</height>
 						<aspectratio>keep</aspectratio>
-					
-						<texture background="true" diffuse="wall/wall_movie_mask.png" fallback="DefaultVideoBigPoster.png">$INFO[Window(home).Property(Poster)]</texture>
+						<texture background="true" diffuse="thumbs/movieposter_mask.png">$INFO[Window(home).Property(Poster)]</texture>
 					</control>				
 					<control type="image">
 						<left>5</left>
@@ -2830,7 +2829,7 @@
 					</control>			
 				</control> 							
                 <control type="grouplist" id="5020">
-                    <left>483</left>
+                    <left>465</left>
                     <top>-130</top>
                     <width>1373</width>
                     <height>80</height>
@@ -5110,7 +5109,7 @@
                             <info>ListItem.Icon</info>
                         </control>
                         <control type="label">
-                            <left></left>
+                            <left>159</left>
                             <top>309</top>
                             <width>309</width>
                             <height>50</height>
@@ -5122,7 +5121,7 @@
                             <visible>!Control.HasFocus(5010)</visible>
                         </control>
                         <control type="label">
-                            <left></left>
+                            <left>159</left>
                             <top>309</top>
                             <width>309</width>
                             <height>50</height>
@@ -5574,7 +5573,7 @@
                             <info>ListItem.Icon</info>
                         </control>
                         <control type="label">
-                            <left></left>
+                            <left>159</left>
                             <top>309</top>
                             <width>309</width>
                             <height>50</height>
@@ -5608,7 +5607,7 @@
                             <info>ListItem.Icon</info>
                         </control>
                         <control type="label">
-                            <left></left>
+                            <left>159</left>
                             <top>309</top>
                             <width>309</width>
                             <height>50</height>
@@ -5620,7 +5619,7 @@
                             <visible>!Control.HasFocus(6010)</visible>
                         </control>
                         <control type="label">
-                            <left></left>
+                            <left>159</left>
                             <top>309</top>
                             <width>309</width>
                             <height>50</height>
@@ -6763,7 +6762,7 @@
                     <animation effect="fade" start="100" end="80" time="40" condition="true">Conditional</animation>
                 </control>
                 <control type="label">
-                    <left></left>
+                    <left>272</left>
                     <top>268</top>
                     <width>528</width>
                     <height>105</height>
@@ -6791,7 +6790,7 @@
                 <animation effect="fade" start="100" end="80" time="40" condition="true">Conditional</animation>
             </control>
             <control type="label">
-                <left></left>
+                <left>272</left>
                 <top>-32</top>
                 <width>528</width>
                 <height>105</height>
@@ -6824,7 +6823,7 @@
                     <texture>$INFO[ListItem.Property(Logo)]</texture>
                 </control>
                 <control type="label">
-                    <left></left>
+                    <left>399</left>
                     <top>8</top>
                     <width>758</width>
                     <height>105</height>
@@ -6845,7 +6844,7 @@
             </control>
         </control>
         <control type="label">
-            <left></left>
+            <left>399</left>
             <top>106</top>
             <width>728</width>
             <height>105</height>
@@ -6874,7 +6873,7 @@
             <texture background="true">$INFO[ListItem.Property(Fanart)]</texture>
         </control>		
         <control type="image">
-            <left></left>
+            <left>0</left>
             <top>285</top>
             <width>532</width>
             <height>60</height>
@@ -6882,7 +6881,7 @@
             <animation effect="fade" start="100" end="80" time="40" condition="true">Conditional</animation>
         </control>
         <control type="label">
-            <left></left>
+            <left>272</left>
             <top>248</top>
             <width>528</width>
             <height>105</height>
@@ -6891,7 +6890,7 @@
             <font>Font_Reg29</font>
         </control>
         <control type="label">
-            <left></left>
+            <left>272</left>
             <top>275</top>
             <width>528</width>
             <height>105</height>
@@ -6909,7 +6908,7 @@
             <width>512</width>
             <height>340</height>
             <aspectratio align="center">keep</aspectratio>
-            <texture background="true" fallback="KODI_Logo.png">$INFO[ListItem.Property(Logo)]</texture>
+            <texture background="true" fallback="XBMC_Logo.png">$INFO[ListItem.Property(Logo)]</texture>
             <visible>!IsEmpty(ListItem.Property(Logo))</visible>
         </control>
         <control type="image">
@@ -6918,11 +6917,11 @@
             <width>512</width>
             <height>340</height>
             <aspectratio align="center">keep</aspectratio>
-            <texture background="true" fallback="KODI_Logo.png">$INFO[ListItem.Property(Fanart)]</texture>
+            <texture background="true" fallback="XBMC_Logo.png">$INFO[ListItem.Property(Fanart)]</texture>
             <visible>IsEmpty(ListItem.Property(Logo))</visible>
         </control>
         <control type="label">
-            <left></left>
+            <left>266</left>
             <top>313</top>
             <width>532</width>
             <height>30</height>
@@ -6932,7 +6931,7 @@
             <font>Font_Reg30_2</font>
         </control>
         <control type="label">
-            <left></left>
+            <left>266</left>
             <top>283</top>
             <width>532</width>
             <height>30</height>
@@ -6951,7 +6950,7 @@
             <width>512</width>
             <height>340</height>
             <aspectratio align="center">keep</aspectratio>
-            <texture background="true" fallback="KODI_Logo.png">$INFO[ListItem.Property(Logo)]</texture>
+            <texture background="true" fallback="XBMC_Logo.png">$INFO[ListItem.Property(Logo)]</texture>
             <visible>IsEmpty(ListItem.Property(ClearArt)) + !IsEmpty(ListItem.Property(Logo))</visible>
         </control>
         <control type="image">
@@ -6969,11 +6968,11 @@
             <width>512</width>
             <height>340</height>
             <aspectratio align="center">keep</aspectratio>
-            <texture background="true" fallback="KODI_Logo.png">$INFO[ListItem.Property(Fanart)]</texture>
+            <texture background="true" fallback="XBMC_Logo.png">$INFO[ListItem.Property(Fanart)]</texture>
             <visible>IsEmpty(ListItem.Property(Logo)) + IsEmpty(ListItem.Property(ClearArt))</visible>
         </control>
         <control type="label">
-            <left></left>
+            <left>266</left>
             <top>283</top>
             <width>532</width>
             <height>30</height>
@@ -6985,7 +6984,7 @@
             <visible>!IsEmpty(ListItem.Property(NextTitle))</visible>
         </control>
         <control type="label">
-            <left></left>
+            <left>266</left>
             <top>313</top>
             <width>532</width>
             <height>30</height>

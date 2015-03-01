@@ -12,11 +12,6 @@
 		<value condition="Substring(System.Time(mm),4,left)">FF69f5ee</value>
 		<value condition="Substring(System.Time(mm),5,left)">FFF3F781</value>
 	</variable>
-	<variable name="NewsFeedVar">
-		<value condition="Stringcompare(System.Language,German)">http://pipes.yahoo.com/pipes/pipe.run?_id=5cc10db1ae3a763e4919c6de8fb58551&amp;_render=json&amp;youtubeid=tagesschau</value>
-		<!--       <value condition="Stringcompare(System.Language,Australia)">http://pipes.yahoo.com/pipes/pipe.run?_id=5cc10db1ae3a763e4919c6de8fb58551&amp;_render=rss&amp;youtubeid=7NEWS</value> 		-->
-		<value>http://pipes.yahoo.com/pipes/pipe.run?_id=2547d7359c1c48b74498130dec548ed3&amp;_render=json</value>
-	</variable>
 	<variable name="QuickConfigIconVar">
 		<value condition="!IsEmpty(Window(home).Property(quicknavsetup))">special://skin/extras/BigIcons/ButtonStop.png</value>
 		<value>special://skin/extras/BigIcons/Gears.png</value>
@@ -618,6 +613,18 @@
 		<value condition="!IsEmpty(Skin.String(VideosBackground))">$INFO[Skin.String(VideosBackground)]</value>
 		<value>special://skin/backgrounds/videos/</value>
 	</variable>
+	<variable name="VideoFanartVar1">
+		<value condition="skin.hassetting(backendmode) + !Skin.HasSetting(NoVideoLibraryFanart) + [Container.Content(tags) | Container.Content(directors) | Container.Content(actors) | Container.Content(genres) | Container.Content(studios) | Container.Content(countries) | Container.Content(years)]">$INFO[Control.GetLabel(4324)]</value>
+		<value condition="Container.Content(genres)">$INFO[ListItem.Label,special://skin/extras/genre/video/fanartBW/,.jpg]</value>
+		<value condition="Container.Content(years)">$INFO[ListItem.Label,special://skin/extras/year/video/fanart/,.jpg]</value>
+		<value condition="[Container.Content(MusicVideos) | Container.Content(Artists) | Container.Content(Albums)]">$VAR[MusicVideosFanartVar]</value>
+		<value condition="Skin.HasSetting(NoVideoLibraryFanart) + !IsEmpty(Skin.String(VideosBackground))">$INFO[Skin.String(VideosBackground)]</value>
+		<value condition="Skin.HasSetting(NoVideoLibraryFanart)">special://skin/backgrounds/videos/</value>
+		<value condition="!IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="Container.Content(addons) + IsEmpty(Skin.String(VideosBackground))">special://skin/backgrounds/programs/</value>
+		<value condition="!IsEmpty(Skin.String(VideosBackground))">$INFO[Skin.String(VideosBackground)]</value>
+		<value>special://skin/backgrounds/videos/</value>
+	</variable>
 	<variable name="MusicShowcaseLayoutVar">
 		<value condition="Stringcompare(Control.GetLabel(4420),fourthumbs)">views/music_cover_layout.png</value>
 		<value>views/music_layout.png</value>
@@ -637,22 +644,20 @@
 		<value>special://skin/backgrounds/speakergrill.jpg</value>
 	</variable>
 	<variable name="MovieFanartVar">
-        <value condition="!IsEmpty(Window(Home).Property(Detail.Movie.1.Art(fanart))) + !Skin.HasSetting(xbmb3c) + skin.hassetting(backendmode) + !Skin.HasSetting(NoVideoLibraryFanart) + [Container.Content(sets) | SubString(ListItem.Path,videodb://movies/sets/,left)]">$INFO[Control.GetLabel(4324)]</value>
+		<value condition="!IsEmpty(Window(Home).Property(Detail.Movie.1.Art(fanart))) + skin.hassetting(backendmode) + !Skin.HasSetting(NoVideoLibraryFanart) + [Container.Content(sets) | SubString(ListItem.Path,videodb://movies/sets/,left)]">$INFO[Control.GetLabel(4324)]</value>
 		<value condition="Skin.HasSetting(NoVideoLibraryFanart) + !IsEmpty(Skin.String(MoviesBackground))">$INFO[Skin.String(MoviesBackground)]</value>
 		<value condition="Skin.HasSetting(NoVideoLibraryFanart)">special://skin/backgrounds/movies/</value>
-        <value condition="!IsEmpty(ListItem.Art(extrafanart1)) + Skin.HasSetting(extrafanartmovies) + !Skin.HasSetting(xbmb3c)">$INFO[Control.GetLabel(4325)]</value>
-        <value condition="!IsEmpty(ListItem.Art(fanart))+ !Skin.HasSetting(xbmb3c)">$INFO[ListItem.Art(fanart)]</value>
-        <value condition="!IsEmpty(Skin.String(MoviesBackground)) + !Skin.HasSetting(xbmb3c)">$INFO[Skin.String(MoviesBackground)]</value>
-        <value condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(MB3.Background.Item.FanArt)]</value>
+		<value condition="!IsEmpty(ListItem.Art(extrafanart1)) + Skin.HasSetting(extrafanartmovies)">$INFO[Control.GetLabel(4325)]</value>
+		<value condition="!IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Skin.String(MoviesBackground))">$INFO[Skin.String(MoviesBackground)]</value>
 		<value>special://skin/backgrounds/movies/</value>
 	</variable>
 	<variable name="TVShowFanartVar">
 		<value condition="Skin.HasSetting(NoVideoLibraryFanartTVShows) + IsEmpty(Skin.String(TVShowsBackground))">special://skin/backgrounds/tvshows/</value>
 		<value condition="Skin.HasSetting(NoVideoLibraryFanartTVShows)">$INFO[Skin.String(TVShowsBackground)]</value>
-        <value condition="!IsEmpty(ListItem.Art(extrafanart1)) + !Skin.HasSetting(xbmb3c) + Skin.HasSetting(extrafanarttvshows)">$INFO[Control.GetLabel(4325)]</value>
-        <value condition="!IsEmpty(ListItem.Art(fanart)) + !Skin.HasSetting(xbmb3c)">$INFO[ListItem.Art(fanart)]</value>
-        <value condition="!IsEmpty(Skin.String(TVShowsBackground)) + !Skin.HasSetting(xbmb3c)">$INFO[Skin.String(TVShowsBackground)]</value>
-        <value condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(MB3.Background.Item.FanArt)]</value>
+		<value condition="!IsEmpty(ListItem.Art(extrafanart1)) + Skin.HasSetting(extrafanarttvshows)">$INFO[Control.GetLabel(4325)]</value>
+		<value condition="!IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Skin.String(TVShowsBackground))">$INFO[Skin.String(TVShowsBackground)]</value>
 		<value>special://skin/backgrounds/tvshows/</value>
 	</variable>
 	<variable name="AddonBrowserFanartVar">
@@ -1221,12 +1226,9 @@
 		<value>-</value>
 	</variable>
 	<variable name="LibraryStatsVar">
-        <value condition="Stringcompare(Control.GetLabel(4326),movies) + !Skin.HasSetting(xbmb3c)">[COLOR grey]$LOCALIZE[31502]:[/COLOR] $INFO[Window(Home).Property(Movies.Count)]  [COLOR grey]  •  $LOCALIZE[16102]:[/COLOR] $INFO[Window(Home).Property(Movies.Watched)]       [COLOR grey]  •  $LOCALIZE[16101]:[/COLOR] $INFO[Window(Home).Property(Movies.UnWatched)]</value>
-        <value condition="Stringcompare(Control.GetLabel(4326),movies) +  Skin.HasSetting(xbmb3c)">[COLOR grey]$LOCALIZE[31502]:[/COLOR] $INFO[Window(Home).Property(MB3TotalMovies)][COLOR grey]  •  $LOCALIZE[16102]:[/COLOR] $INFO[Window(Home).Property(MB3TotalWatchedMovies)][COLOR grey]  •  $LOCALIZE[16101]:[/COLOR] $INFO[Window(Home).Property(MB3TotalUnWatchedMovies)]</value>
-        <value condition="Stringcompare(Control.GetLabel(4326),tvshows) + !Skin.HasSetting(xbmb3c)">[COLOR grey]$LOCALIZE[20343]:[/COLOR] $INFO[Window(Home).Property(TVShows.Count)]  [COLOR grey]  •  $LOCALIZE[20360]:[/COLOR] $INFO[Window(Home).Property(Episodes.Count)][COLOR grey]  •    $LOCALIZE[16101]:[/COLOR] $INFO[Window(Home).Property(Episodes.UnWatched)]</value>
-        <value condition="Stringcompare(Control.GetLabel(4326),tvshows) + Skin.HasSetting(xbmb3c)"> [COLOR grey]$LOCALIZE[20343]:[/COLOR] $INFO[Window(Home).Property(MB3TotalTvShows)][COLOR grey]  •  $LOCALIZE[20360]:[/COLOR] $INFO[Window(Home).Property(MB3TotalEpisodes)][COLOR grey]  •  $LOCALIZE[16101]:[/COLOR] $INFO[Window(Home).Property(MB3TotalUnWatchedEpisodes)]</value>
-        <value condition="Stringcompare(Control.GetLabel(4326),music) + !Skin.HasSetting(xbmb3c)">[COLOR grey]$LOCALIZE[133]:[/COLOR] $INFO[Window(Home).Property(Music.ArtistsCount)]  [COLOR grey]  •  $LOCALIZE[132]:[/COLOR] $INFO[Window(Home).Property(Music.AlbumsCount)][COLOR grey]  •    $LOCALIZE[134]:[/COLOR] $INFO[Window(Home).Property(Music.SongsCount)]</value>
-        <value condition="Stringcompare(Control.GetLabel(4326),music) + Skin.HasSetting(xbmb3c)"> [COLOR grey]$LOCALIZE[133]:[/COLOR] $INFO[Window(Home).Property(MB3TotalMusicArtists)][COLOR grey]  •  $LOCALIZE[132]:[/COLOR] $INFO[Window(Home).Property(MB3TotalMusicAlbums)][COLOR grey]  •  $LOCALIZE[134]:[/COLOR] $INFO[Window(Home).Property(MB3TotalMusicSongs)]</value>
+		<value condition="Stringcompare(Control.GetLabel(4326),movies)">[COLOR grey]$LOCALIZE[31502]:[/COLOR] $INFO[Window(Home).Property(Movies.Count)][COLOR grey]  •  $LOCALIZE[16102]:[/COLOR] $INFO[Window(Home).Property(Movies.Watched)][COLOR grey]  •  $LOCALIZE[16101]:[/COLOR] $INFO[Window(Home).Property(Movies.UnWatched)]</value>
+		<value condition="Stringcompare(Control.GetLabel(4326),tvshows)">[COLOR grey]$LOCALIZE[20343]:[/COLOR] $INFO[Window(Home).Property(TVShows.Count)][COLOR grey]  •  $LOCALIZE[20360]:[/COLOR] $INFO[Window(Home).Property(Episodes.Count)][COLOR grey]  •  $LOCALIZE[16101]:[/COLOR] $INFO[Window(Home).Property(Episodes.UnWatched)]</value>
+		<value condition="Stringcompare(Control.GetLabel(4326),music)">[COLOR grey]$LOCALIZE[133]:[/COLOR] $INFO[Window(Home).Property(Music.ArtistsCount)][COLOR grey]  •  $LOCALIZE[132]:[/COLOR] $INFO[Window(Home).Property(Music.AlbumsCount)][COLOR grey]  •  $LOCALIZE[134]:[/COLOR] $INFO[Window(Home).Property(Music.SongsCount)]</value>
 		<value condition="Stringcompare(Control.GetLabel(4326),musicvideos)">[COLOR grey]$LOCALIZE[20389]:[/COLOR] $INFO[Window(Home).Property(MusicVideos.Count)][COLOR grey]  •  $LOCALIZE[16102]:[/COLOR] $INFO[Window(Home).Property(MusicVideos.Watched)][COLOR grey]  •  $LOCALIZE[16101]:[/COLOR] $INFO[Window(Home).Property(MusicVideos.UnWatched)]</value>
         <value condition="Stringcompare(Control.GetLabel(4326),PVR) + PVR.IsRecording">$LOCALIZE[19158] $INFO[PVR.NowRecordingDateTime, [B][COLOR=grey], [/COLOR][/B]$LOCALIZE[19126] - ] • [B][COLOR=FF48D1CC]$INFO[PVR.NowRecordingTitle][/COLOR][/B] [B][COLOR=grey]($INFO[PVR.NowRecordingChannel, ])[/COLOR][/B]</value>
         <value condition="Stringcompare(Control.GetLabel(4326),PVR) + PVR.HasNonRecordingTimer">$LOCALIZE[19157] $INFO[PVR.NextRecordingDateTime, [B][COLOR=grey], [/COLOR][/B]$LOCALIZE[19126] - ] • $INFO[PVR.NextRecordingTitle, [B][COLOR=grey],[/COLOR][/B]]$INFO[PVR.NextRecordingChannel, - [B][COLOR=grey],[/COLOR][/B]]</value>
@@ -1509,9 +1511,8 @@
 		<value>-</value>
 	</variable>
 	<variable name="MusicFanartVar">
-        <value condition="!Skin.HasSetting(NoMusicLibraryFanart) + !Skin.HasSetting(xbmb3c) + !IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
-        <value condition="IsEmpty(Skin.String(MusicBackground)) + !Skin.HasSetting(xbmb3c)">special://skin/backgrounds/music/</value>
-        <value condition="Skin.HasSetting(xbmb3c)">$INFO[Window(Home).Property(MB3.Background.Item.FanArt)]</value>        
+		<value condition="!Skin.HasSetting(NoMusicLibraryFanart) + !IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="IsEmpty(Skin.String(MusicBackground))">special://skin/backgrounds/music/</value>
 		<value>$INFO[Skin.String(MusicBackground)]</value>
 	</variable>
 	<variable name="PlayerTimeLabelVar">

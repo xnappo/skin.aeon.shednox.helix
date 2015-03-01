@@ -1339,7 +1339,7 @@
                 <visible>!SubString(ListItem.Property(BigIcon),/BigIcons/)</visible>
             </control>
             <control type="label">
-				<left>171</left>
+                <left>297</left>
                 <top>29</top>
                 <width>250</width>
                 <height>225</height>
@@ -1373,7 +1373,7 @@
                 </control>
             </control>
             <control type="label">
-				<left>171</left>
+                <left>297</left>
                 <top>29</top>
                 <width>250</width>
                 <height>225</height>
@@ -1385,7 +1385,7 @@
         </focusedlayout>
         <itemlayout height="225" width="519" condition="!Skin.HasSetting(biggergap) + !Skin.HasSetting(mainmenuicons)">
             <control type="label">
-				<left>0</left>
+                <left>260</left>
                 <width>519</width>
                 <textcolor>white5</textcolor>
                 <include>MainMenuLabels</include>
@@ -1393,7 +1393,7 @@
         </itemlayout>
         <focusedlayout height="225" width="519" condition="!Skin.HasSetting(biggergap) + !Skin.HasSetting(mainmenuicons)">
             <control type="label">
-				<left>0</left>
+                <left>260</left>
                 <width>519</width>
                 <textcolor>$VAR[MainMenuFontColorVar]</textcolor>
                 <include>MainMenuLabels</include>
@@ -1401,7 +1401,7 @@
         </focusedlayout>
         <itemlayout height="225" width="639" condition="Skin.HasSetting(biggergap)">
             <control type="label">
-				<left>0</left>
+                <left>320</left>
                 <width>639</width>
                 <textcolor>white5</textcolor>
                 <include>MainMenuLabels</include>
@@ -1409,7 +1409,7 @@
         </itemlayout>
         <focusedlayout height="225" width="639" condition="Skin.HasSetting(biggergap)">
             <control type="label">
-				<left>0</left>
+                <left>320</left>
                 <width>639</width>
                 <textcolor>$VAR[MainMenuFontColorVar]</textcolor>
                 <include>MainMenuLabels</include>
@@ -1458,7 +1458,7 @@
         <ondown condition="Skin.HasSetting(lowermainmenu)">SetFocus(9011)</ondown>
         <itemlayout width="230" height="50">
             <control type="label">
-				<left>0</left>
+                <left>115</left>
                 <width>224</width>
                 <height>50</height>
                 <align>center</align>
@@ -1469,7 +1469,7 @@
         </itemlayout>
         <focusedlayout width="230" height="50">
             <control type="label">
-				<left>0</left>
+                <left>115</left>
                 <width>224</width>
                 <height>50</height>
                 <align>center</align>
@@ -1481,7 +1481,7 @@
                 <scroll>true</scroll>
             </control>
             <control type="label">
-				<left>0</left>
+                <left>115</left>
                 <width>224</width>
                 <height>50</height>
                 <align>center</align>

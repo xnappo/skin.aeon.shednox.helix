@@ -69,7 +69,7 @@
 						<colordiffuse>88ffffff</colordiffuse>
                     </control>
                     <control type="label">
-                        <left>125</left>
+                        <left></left>
                         <top>115</top>
                         <width>250</width>
                         <height>30</height>
@@ -87,7 +87,7 @@
                         <aspectratio>keep</aspectratio>
                     </control>
                     <control type="label">
-                        <left>125</left>
+                        <left></left>
                         <top>115</top>
                         <width>250</width>
                         <height>30</height>
@@ -122,8 +122,8 @@
                     </item>
                     <item id="2">
                         <label>$LOCALIZE[32996]</label>
-                        <icon>views/invertTV.png</icon>
-                        <thumb>views/invertTV_focus.png</thumb>
+                        <icon>views/inverttv.png</icon>
+                        <thumb>views/inverttv_focus.png</thumb>
                         <onclick>Skin.SetBool(VideoInfoInverse)</onclick>
 						<onclick>Skin.Reset(VideoInfoOriginal)</onclick>
 						<enable>false</enable>
@@ -183,14 +183,14 @@
 					<visible>Container.Content(movies) + [!IsEmpty(Skin.String(ColorFlagsPath)) + IsEmpty(Skin.String(ReloadedFlagsPath))]</visible>				
 				</control> 	
                 <control type="radiobutton" id="1302">
-                    <label>$LOCALIZE[33001]</label>
+                    <label>$LOCALIZE[32007]</label>
                     <include>Objects_MediaMenuButtonAround</include>
                     <onclick>Skin.ToggleSetting(RatingColorFlagreloaded)</onclick>
                     <selected>Skin.HasSetting(RatingColorFlagreloaded)</selected>
 					<visible>Container.Content(movies) + [IsEmpty(Skin.String(ColorFlagsPath)) + !IsEmpty(Skin.String(ReloadedFlagsPath))]</visible>				
 				</control> 								
                 <control type="radiobutton" id="1201">
-                    <label>$LOCALIZE[31990]</label>
+                    <label>$LOCALIZE[32006]</label>
                     <include>Objects_MediaMenuButtonAround</include>
                     <onclick>Skin.ToggleSetting(ColortvguideFlags)</onclick>
                     <selected>Skin.HasSetting(ColortvguideFlags)</selected>
@@ -216,7 +216,7 @@
 					<visible>Container.Content(tvshows) + [!IsEmpty(Skin.String(ColorFlagsPath)) + IsEmpty(Skin.String(ReloadedFlagsPath))]</visible>				
 				</control> 	
                 <control type="radiobutton" id="1306">
-                    <label>$LOCALIZE[33001]</label>
+                    <label>$LOCALIZE[32007]</label>
                     <include>Objects_MediaMenuButtonAround</include>
                     <onclick>Skin.ToggleSetting(RatingColorFlagreloaded)</onclick>
                     <selected>Skin.HasSetting(RatingColorFlagreloaded)</selected>

@@ -224,13 +224,6 @@
         <texture>views/tripanel/upright.png</texture>
         <colordiffuse>$VAR[ColorDiffuseVar]</colordiffuse>
     </include>
-	<include name="Furniture_FlagUpright1">
-        <width>2</width>
-        <height>71</height>
-       	<texture colordiffuse="$INFO[Window(home).Property(VideoInfo.ImageColor)]">views/tripanel/upright.png</texture>
-    </include>
-	
-	
     <include name="AudioFlagsVars">
         <width>135</width>
         <height>64</height>
